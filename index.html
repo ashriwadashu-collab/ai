@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+        scroll-behavior: smooth;
+    }
+
+    nav.active{
+        background:rgb(227, 227, 227);
+        color:white;
+    }
+
+
+    #cursor {
+        width: 20px;
+        height: 20px;
+        background: #0d6efd;
+        border-radius: 50%;
+        position: fixed;
+        left: 0;
+        top: 0;
+        pointer-events: none;
+        transition: 0.08s;
+        z-index: 99999;
+    }
+
+    #progress-bar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 0%;
+        height: 5px;
+        background: #0d6efd;
+        z-index: 9999;
+    }
+
+
+    #scrollTop {
+        position: fixed;
+        right: 25px;
+        bottom: 25px;
+
+        width: 55px;
+        height: 55px;
+
+        border: none;
+        border-radius: 50%;
+
+        background: #0d6efd;
+        color: #fff;
+
+        font-size: 22px;
+        cursor: pointer;
+
+        display: none;
+
+        transition: .3s;
+    }
+
+    #scrollTop:hover {
+        transform: translateY(-8px);
+    }
+
+    .dark {
+        background: black;
+        color: white;
+    }
+
+    nav {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        height: 80px;
+        background: rgb(249, 248, 248);
+        border: none;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 80px;
+        z-index: 9999;
+    }
+
+    #btn {
+        display: none;
+        background: none;
+        border: none;
+        color: black;
+        cursor: pointer;
+        font-size: 25px;
+    }
+
+    .menu a {
+        text-decoration: none;
+        color: black;
+        font-size: 20px;
+        margin: 10px;
+    }
+
+    .top1 {
+        font-size: 30px;
+        color: blue;
+    }
+
+    .menu {
+        display: flex;
+        gap: 30px;
+    }
+
+    #theme {
+        background: none;
+        border: none;
+        font-size: 25px;
+        cursor: pointer;
+        padding-left: 200px;
+    }
+
+    .top2 {
+        background-image: url("images/ai.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        margin-top: 80px;
+        height: 600px;
+    }
+
+    .top3 {
+        padding-top: 100px;
+        padding-left: 50px;
+        text-transform: capitalize;
+    }
+
+    .top3 h1 {
+        padding-bottom: 5px;
+        font-weight: 500;
+        font-size: 20px;
+    }
+
+    .top3 h2 {
+        font-size: 45px;
+    }
+
+    .top3 h2 span {
+        color: blue;
+    }
+
+    .top3 p {
+        text-transform: capitalize;
+        line-height: 35px;
+    }
+
+    .nsa {
+        padding-left: 50px;
+        display: flex;
+        gap: 20px;
+        padding-top: 20px;
+    }
+
+    #now {
+        background: blue;
+        color: white;
+        padding: 10px;
+        border-radius: 10px;
+        border: none;
+        font-size: larger;
+        text-transform: capitalize;
+        cursor: pointer;
+    }
+
+    #won {
+        background: none;
+        color: black;
+        padding: 10px;
+        border-radius: 10px;
+        border: 3px solid blue;
+        font-size: larger;
+        text-transform: capitalize;
+        cursor: pointer;
+    }
+
+
+    .sec {
+        margin-top: 40px;
+        text-align: center;
+        text-transform: capitalize;
+    }
+
+    .sec h1 {
+        font-size: 20px;
+    }
+
+    .sec h2 {
+        font-size: 40px;
+        color: blue;
+    }
+
+    .sec p {
+        line-height: 35px;
+    }
+
+    .top4 {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        padding: 20px 40px;
+        gap: 20px;
+    }
+
+
+    .top5 {
+        background: #fff;
+        border: 2px solid #ddd;
+        border-radius: 15px;
+        padding: 30px;
+        text-align: center;
+        transition: .4s;
+        margin-top: 40px;
+    }
+
+    .top5:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, .12);
+    }
+
+
+    .top5 h1 {
+        color: #0d6efd;
+        margin-bottom: 15px;
+        font-size: 26px;
+    }
+
+    .top5 p {
+        color: #555;
+        line-height: 28px;
+        font-size: 17px;
+    }
+
+
+    .top6 {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        padding: 20px 40px;
+        gap: 20px;
+    }
+
+    .top7 {
+        background: #fff;
+        border: 2px solid #ddd;
+        border-radius: 15px;
+        padding: 30px;
+        text-align: center;
+        transition: .4s;
+        margin-top: 40px;
+    }
+
+    .top7:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, .12);
+    }
+
+
+    .top5 h1 {
+        color: #0d6efd;
+        margin-bottom: 15px;
+        font-size: 26px;
+    }
+
+    .top5 p {
+        color: #555;
+        line-height: 28px;
+        font-size: 17px;
+    }
+
+    footer {
+        background: #111;
+        color: #fff;
+        margin-top: 80px;
+    }
+
+    .footer-container {
+        width: 90%;
+        margin: auto;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 40px;
+        padding: 60px 0;
+        text-transform: capitalize;
+    }
+
+    .footer-box h2 {
+        color: #0d6efd;
+        margin-bottom: 20px;
+        font-size: 28px;
+    }
+
+    .footer-box p {
+        color: #ddd;
+        margin: 12px 0;
+        line-height: 28px;
+        transition: .5s;
+        cursor: pointer;
+    }
+
+    .footer-box p:hover {
+        color: #0d6efd;
+    }
+
+    .copyright {
+        border-top: 1px solid #333;
+        text-align: center;
+        padding: 20px;
+    }
+
+    .copyright p {
+        color: #bbb;
+        font-size: 16px;
+    }
+
+
+    /* =========================
+   Mobile Responsive
+========================= */
+
+    @media (max-width:768px) {
+
+        nav {
+            height: 70px;
+            padding: 0 20px;
+        }
+
+        .top1 {
+            font-size: 24px;
+        }
+
+        #btn {
+            display: block;
+            font-size: 28px;
+        }
+
+        .menu {
+            position: absolute;
+            top: 70px;
+            left: 0;
+            width: 100%;
+            background: #111;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: .5s;
+            padding: 0;
+        }
+
+        .menu.show {
+            max-height: 500px;
+            padding: 20px 0;
+        }
+
+        .menu a {
+            color: #fff;
+            font-size: 20px;
+        }
+
+        #theme {
+            padding-left: 0;
+            color: #fff;
+        }
+
+        .top2 {
+            margin-top: 70px;
+            height: auto;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .top3 {
+            padding: 0;
+        }
+
+        .top3 h1 {
+            font-size: 18px;
+        }
+
+        .top3 h2 {
+            font-size: 32px;
+            line-height: 42px;
+        }
+
+        .top3 p {
+            font-size: 15px;
+            line-height: 28px;
+        }
+
+        .top3 br {
+            display: none;
+        }
+
+        .nsa {
+            padding: 25px 0 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        #now,
+        #won {
+            width: 220px;
+            font-size: 16px;
+        }
+
+        .sec {
+            padding: 0 20px;
+        }
+
+        .sec h1 {
+            font-size: 18px;
+        }
+
+        .sec h2 {
+            font-size: 30px;
+        }
+
+        .sec p {
+            line-height: 28px;
+        }
+
+        .sec p br {
+            display: none;
+        }
+
+        .top4 {
+            grid-template-columns: 1fr;
+            padding: 20px;
+            gap: 20px;
+        }
+
+        .top5 {
+            margin-top: 0;
+            padding: 25px;
+        }
+
+        .top5 h1 {
+            font-size: 22px;
+        }
+
+        .top5 p {
+            font-size: 15px;
+            line-height: 26px;
+        }
+
+        .top6 {
+            grid-template-columns: 1fr;
+            padding: 20px;
+            gap: 20px;
+        }
+
+        .top7 {
+            margin-top: 0;
+            padding: 25px;
+        }
+
+        .footer-container {
+            grid-template-columns: 1fr;
+            padding: 40px 20px;
+            text-align: center;
+            gap: 30px;
+        }
+
+        .footer-box h2 {
+            font-size: 24px;
+        }
+
+        .copyright p {
+            font-size: 14px;
+        }
+    }
+</style>
+<header>
+    <nav>
+        <h1 class="top1">AI LEARN</h1>
+        <button id="btn">☰</button>
+        <div class="menu" id="menu">
+            <a href="index.html">Home</a>
+            <a href="aipage2.html">AI basics</a>
+            <a href="aipage3.html">AI technologies</a>
+            <a href="aipage4.html">AI tools</a>
+            <a href="#">contact</a>
+            <button id="theme">🌙</button>
+        </div>
+    </nav>
+</header>
+
+<body>
+
+    <div id="cursor"></div>
+
+    <div id="progress-bar"></div>
+
+    <button id="scrollTop">↑</button>
+
+    <div class="top2">
+        <div class="top3">
+            <h1>learn ai. build future</h1>
+            <h2>learn artificial<br>intelligence<br>from <span> basics</span> to<br><span>expert level</span></h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.<br> Voluptates nisi quisquam ipsa expedita
+                minima
+                eius.</p>
+        </div>
+        <div class="nsa">
+            <button id="now">start learning</button>
+            <button id="won">explore topics</button>
+        </div>
+    </div>
+    </div>
+
+    <div class="sec">
+        <h1>benefits</h1>
+        <h2>why learn AI </h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque ad <br>explicabo quibusdam fugit iste et
+            incidunt ea voluptatibus harum! Placeat!</p>
+    </div>
+    </div>
+
+
+
+    <div class="top4">
+        <div class="top5">
+            <h1>in-deamnd skill</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea molestias quia molestiae?</p>
+        </div>
+
+        <div class="top5">
+            <h1>build the future</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea molestias quia molestiae?</p>
+        </div>
+
+        <div class="top5">
+            <h1>enhance thinking</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea molestias quia molestiae?</p>
+        </div>
+
+        <div class="top5">
+            <h1>better career</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea molestias quia molestiae?</p>
+        </div>
+
+        <div class="top5">
+            <h1>impact the world</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea molestias quia molestiae?</p>
+        </div>
+    </div>
+
+
+    <div class="sec">
+        <h1>tools</h1>
+        <h2>popular AI tools</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque ad <br>explicabo quibusdam fugit iste et
+            incidunt ea voluptatibus harum! Placeat!</p>
+    </div>
+    </div>
+
+
+
+    <div class="top4">
+        <div class="top5">
+            <h1>chatGPT</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea molestias quia molestiae?</p>
+        </div>
+
+        <div class="top5">
+            <h1>google gemini</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea molestias quia molestiae?</p>
+        </div>
+
+        <div class="top5">
+            <h1>claude</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea molestias quia molestiae?</p>
+        </div>
+
+        <div class="top5">
+            <h1>midjourney</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea molestias quia molestiae?</p>
+        </div>
+
+        <div class="top5">
+            <h1>gitHub copilot</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea molestias quia molestiae?</p>
+        </div>
+    </div>
+
+
+
+    <div class="top6">
+        <div class="top7">
+            <h1>100+</h1>
+            <p>pratice example</p>
+        </div>
+
+        <div class="top7">
+            <h1>10k+</h1>
+            <p>happy learner</p>
+        </div>
+
+        <div class="top7">
+            <h1>50+</h1>
+            <p>AI topics</p>
+        </div>
+
+        <div class="top7">
+            <h1>20+</h1>
+            <p>AI tools covered</p>
+        </div>
+    </div>
+
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-box">
+                <h2>AI Learn</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est placeat cumque consequatur unde
+                    voluptatum nisi?</p>
+            </div>
+            <div class="footer-box">
+                <h2>Quick Links</h2>
+                <p>Home</p>
+                <p>AI basics</p>
+                <p>AI technologies</p>
+                <p>AI tools</p>
+                <p>contact</p>
+            </div>
+            <div class="footer-box">
+                <h2>resources</h2>
+                <p>blog</p>
+                <p>tutorials</p>
+                <p>projects</p>
+                <p>faq</p>
+                <p>glossary</p>
+            </div>
+            <div class="footer-box">
+                <h2>Contact</h2>
+                <p>Email : support@AIlearn.com</p>
+                <p>Phone : +91 9876543210</p>
+                <p>India</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>© 2026 AI Learn. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+
+<script>
+    var header = document.querySelector("nav")
+
+    window.addEventListener("scroll", function(){
+        if(window.scrollY > 100){
+            header.classList.add("active");
+            
+        }else{
+            header.classList.remove("active")
+        }
+    })
+</script>
+
+<script>
+    var cursor = document.getElementById("cursor");
+
+document.addEventListener("mousemove", function(e){
+
+    cursor.style.left = e.clientX + "px";
+    cursor.style.top = e.clientY + "px";
+
+});
+</script>
+
+<script>
+    var btn = document.getElementById("btn")
+    var menu = document.getElementById("menu")
+    btn.onclick = function () {
+        menu.classList.toggle("show")
+    }
+</script>
+
+<script>
+    var theme = document.getElementById("theme");
+
+    theme.onclick = function () {
+
+        document.body.classList.toggle("dark")
+
+        if (document.body.classList.contains("dark")) {
+            theme.innerHTML = "☀️"
+        }
+        else {
+            theme.innerHTML = "🌙"
+        }
+
+    }
+</script>
+
+<script>
+    const progressBar = document.getElementById("progress-bar");
+    const scrollBtn = document.getElementById("scrollTop");
+
+    window.addEventListener("scroll", function () {
+
+        let scroll = document.documentElement.scrollTop;
+
+        let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+
+        let progress = (scroll / height) * 100;
+
+        progressBar.style.width = progress + "%";
+
+        if (scroll > 300) {
+            scrollBtn.style.display = "block";
+        } else {
+            scrollBtn.style.display = "none";
+        }
+
+    });
+
+    scrollBtn.onclick = function () {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    };
+</script>
+
+</html>
