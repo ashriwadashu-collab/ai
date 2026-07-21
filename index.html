@@ -20,32 +20,8 @@
     }
 
     nav.active {
-        background: rgb(227, 227, 227);
+        background: rgb(210, 210, 210);
         color: white;
-    }
-
-
-    #cursor {
-        width: 20px;
-        height: 20px;
-        background: #0d6efd;
-        border-radius: 50%;
-        position: fixed;
-        left: 0;
-        top: 0;
-        pointer-events: none;
-        transition: 0.08s;
-        z-index: 99999;
-    }
-
-    #progress-bar {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 0%;
-        height: 5px;
-        background: #0d6efd;
-        z-index: 9999;
     }
 
 
@@ -112,7 +88,7 @@
 
     .top1 {
         font-size: 30px;
-        color: blue;
+        color: #0d6efd;
     }
 
     .menu {
@@ -125,11 +101,11 @@
         border: none;
         font-size: 25px;
         cursor: pointer;
-        padding-left: 200px;
+        padding-left: 120px;
     }
 
     .top2 {
-        background-image: url("images/a.png");
+        background-image: url("images/ai.png");
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center;
@@ -143,18 +119,21 @@
         text-transform: capitalize;
     }
 
-    .top3 h1 {
-        padding-bottom: 5px;
-        font-weight: 500;
-        font-size: 20px;
+    #testa {
+        font-size: 50px;
+        text-transform: capitalize;
+        margin-bottom: 5px;
+        color: #0d6efd;
+        height: 60px;
     }
 
+
     .top3 h2 {
-        font-size: 45px;
+        font-size: 35px;
     }
 
     .top3 h2 span {
-        color: blue;
+      color: #0d6efd;
     }
 
     .top3 p {
@@ -170,7 +149,7 @@
     }
 
     #now {
-        background: blue;
+        background: #0d6efd;;
         color: white;
         padding: 10px;
         border-radius: 10px;
@@ -185,7 +164,7 @@
         color: black;
         padding: 10px;
         border-radius: 10px;
-        border: 3px solid blue;
+        border: 3px solid #0d6efd;;
         font-size: larger;
         text-transform: capitalize;
         cursor: pointer;
@@ -204,7 +183,7 @@
 
     .sec h2 {
         font-size: 40px;
-        color: blue;
+        color: #0d6efd;
     }
 
     .sec p {
@@ -326,6 +305,73 @@
     .copyright p {
         color: #bbb;
         font-size: 16px;
+    }
+
+
+
+    /* Popup Box */
+
+    .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.6);
+        display: none;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .box {
+        width: 300px;
+        background: white;
+        padding: 20px;
+        border-radius: 15px;
+        text-align: center;
+        position: relative;
+        animation: show .3s;
+    }
+
+    @keyframes show {
+        from {
+            transform: scale(0);
+        }
+
+        to {
+            transform: scale(1);
+        }
+    }
+
+    .box img {
+        width: 100%;
+        border-radius: 10px;
+    }
+
+    .box h2 {
+        margin: 15px 0;
+        color: #0d6efd;
+    }
+
+    .box p {
+        color: #555;
+        line-height: 25px;
+        text-align: justify;
+    }
+
+    /* Close Button */
+    #closeBtn {
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        width: 35px;
+        height: 35px;
+        border: none;
+        border-radius: 50%;
+        background: red;
+        color: white;
+        cursor: pointer;
+        font-size: 18px;
     }
 
 
@@ -500,7 +546,7 @@
             <a href="aipage3.html">AI technologies</a>
             <a href="aipage4.html">AI tools</a>
             <a href="aipage5.html">AI Applications</a>
-            <a href="#">contact</a>
+            <a href="aipage6.html">contact</a>
             <button id="theme">🌙</button>
         </div>
     </nav>
@@ -508,23 +554,34 @@
 
 <body>
 
-    <div id="cursor"></div>
-
-    <div id="progress-bar"></div>
-
     <button id="scrollTop">↑</button>
 
     <div class="top2">
         <div class="top3">
-            <h1>learn ai. build future</h1>
+            <h1 id="testa"></h1>
             <h2>learn artificial<br>intelligence<br>from <span> basics</span> to<br><span>expert level</span></h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.<br> Voluptates nisi quisquam ipsa expedita
-                minima
+             <p>
+            Learn AI concepts, tools, and technologies with easy<br>
+            explanations, examples, and practical projects.
+        </p>
                 eius.</p>
         </div>
         <div class="nsa">
             <button id="now">start learning</button>
-            <button id="won">explore topics</button>
+            <button id="won">Explore AI</button>
+            <div class="overlay" id="popup">
+                <div class="box">
+                    <button id="closeBtn"> ✖</button>
+                    <img src="images/ai.png">
+                    <h2>Explore AI World</h2>
+                    <p> Artificial Intelligence allows machines to learn, analyze data,
+                        and solve complex problems like humans.
+
+                        Learn Machine Learning, Deep Learning, AI Tools,
+                        and real-world applications.
+                    </p>
+                </div>
+            </div>
         </div>
     </div>
     </div>
@@ -665,6 +722,38 @@
     </footer>
 
 </body>
+<script>
+    var msg = "learn ai build future"
+
+    var i = 0
+
+    function typing() {
+        document.getElementById("testa").innerHTML += msg.charAt(i)
+
+        i++
+        if (i == msg.length) {
+            setTimeout(function () {
+                document.getElementById("testa").innerHTML = ""
+                i = 0
+            }, 3000)
+        }
+    }
+
+    setInterval(typing, 200)
+</script>
+
+<script>
+    var won = document.getElementById("won");
+
+    var popup = document.getElementById("popup");
+
+    var closeBtn = document.getElementById("closeBtn");
+
+    won.onclick = function () { popup.style.display = "flex"; }
+
+
+    closeBtn.onclick = function () { popup.style.display = "none"; }
+</script>
 
 <script>
     var header = document.querySelector("nav")
@@ -677,17 +766,6 @@
             header.classList.remove("active")
         }
     })
-</script>
-
-<script>
-    var cursor = document.getElementById("cursor");
-
-    document.addEventListener("mousemove", function (e) {
-
-        cursor.style.left = e.clientX + "px";
-        cursor.style.top = e.clientY + "px";
-
-    });
 </script>
 
 <script>
@@ -716,25 +794,15 @@
 </script>
 
 <script>
-    const progressBar = document.getElementById("progress-bar");
     const scrollBtn = document.getElementById("scrollTop");
-
     window.addEventListener("scroll", function () {
-
         let scroll = document.documentElement.scrollTop;
-
-        let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-
-        let progress = (scroll / height) * 100;
-
-        progressBar.style.width = progress + "%";
-
         if (scroll > 300) {
             scrollBtn.style.display = "block";
-        } else {
+        }
+        else {
             scrollBtn.style.display = "none";
         }
-
     });
 
     scrollBtn.onclick = function () {
