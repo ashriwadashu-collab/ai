@@ -1,0 +1,1395 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Machine Learning - AI Learn</title>
+</head>
+<style>
+    *{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Poppins",sans-serif;
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#fff;
+    color:#222;
+}
+
+
+
+/* ================= NAVBAR ================= */
+
+nav{
+
+    position:fixed;
+    top:0;
+    width:100%;
+    height:80px;
+
+    background:#f9f8f8;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:0 80px;
+
+    z-index:9999;
+}
+
+
+.top1{
+
+    font-size:30px;
+    color:#0d6efd;
+
+}
+
+
+.menu{
+
+    display:flex;
+    align-items:center;
+    gap:30px;
+
+}
+
+
+.menu a{
+
+    text-decoration:none;
+    color:#222;
+
+    font-size:18px;
+
+    transition:.3s;
+
+}
+
+
+.menu a:hover{
+
+    color:#0d6efd;
+
+}
+
+
+
+#theme{
+
+    background:none;
+    border:none;
+
+    font-size:25px;
+
+    cursor:pointer;
+
+}
+
+
+
+/* ================= HERO ================= */
+
+
+.application-hero{
+
+    width:100%;
+    min-height:100vh;
+
+    background:linear-gradient(
+        135deg,
+        #f7fbff,
+        #edf5ff,
+        #ffffff
+    );
+
+    padding-top:120px;
+
+}
+
+
+
+.hero-content{
+
+    width:85%;
+    margin:auto;
+
+    text-align:center;
+
+}
+
+
+
+.hero-content h5{
+
+    color:#0d6efd;
+
+    font-size:18px;
+
+    text-transform:uppercase;
+
+    margin-bottom:20px;
+
+}
+
+
+
+.hero-content h1{
+
+    font-size:55px;
+
+    color:#222;
+
+    margin-bottom:30px;
+
+}
+
+
+
+.hero-content span{
+
+    color:#0d6efd;
+
+}
+
+
+
+.hero-content p{
+
+    max-width:1000px;
+
+    margin:40px auto;
+
+    font-size:18px;
+
+    line-height:38px;
+
+    color:#555;
+
+    text-align:justify;
+
+}
+
+
+
+.hero-btn{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:20px;
+
+}
+
+
+
+#now,#won{
+
+    padding:16px 35px;
+
+    border-radius:8px;
+
+    font-size:18px;
+
+    cursor:pointer;
+
+    transition:.4s;
+
+}
+
+
+#now{
+
+    background:#0d6efd;
+
+    color:white;
+
+    border:none;
+
+}
+
+
+
+#now:hover{
+
+    background:#0847b7;
+
+    transform:translateY(-8px);
+
+}
+
+
+
+#won{
+
+    background:white;
+
+    color:#0d6efd;
+
+    border:2px solid #0d6efd;
+
+}
+
+
+
+#won:hover{
+
+    background:#0d6efd;
+
+    color:white;
+
+}
+
+
+
+
+
+
+/* ================= CONTENT SECTIONS ================= */
+
+
+.about-application,
+.why-ai{
+
+    width:100%;
+
+    padding:100px 8%;
+
+}
+
+
+
+.sec{
+
+    max-width:1150px;
+
+    margin:auto;
+
+}
+
+
+
+.sec h1{
+
+    text-align:center;
+
+    color:#0d6efd;
+
+    font-size:32px;
+
+    text-transform:uppercase;
+
+    margin-bottom:20px;
+
+}
+
+
+
+.sec h2{
+
+    text-align:center;
+
+    font-size:42px;
+
+    margin-bottom:30px;
+
+}
+
+
+
+.sec p{
+
+    font-size:18px;
+
+    line-height:38px;
+
+    color:#555;
+
+    text-align:justify;
+
+}
+
+
+
+
+
+
+/* ================= ML TYPES ================= */
+
+
+.application-details{
+
+    padding:100px 8%;
+
+    background:#fff;
+
+}
+
+
+
+.application-box{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:70px;
+
+    margin-bottom:120px;
+
+}
+
+
+
+.application-box.reverse{
+
+    flex-direction:row-reverse;
+
+}
+
+
+
+.application-image{
+
+    flex:1;
+
+    overflow:hidden;
+
+    border-radius:20px;
+
+}
+
+
+
+.application-image img{
+
+    width:100%;
+
+    border-radius:20px;
+
+    transition:.5s;
+
+    box-shadow:
+    0 15px 40px rgba(0,0,0,.15);
+
+}
+
+
+
+.application-image img:hover{
+
+    transform:scale(1.08);
+
+}
+
+
+
+
+.application-content{
+
+    flex:1;
+
+}
+
+
+
+.application-content h2{
+
+    color:#0d6efd;
+
+    font-size:40px;
+
+    margin-bottom:25px;
+
+}
+
+
+
+.application-content p{
+
+    color:#555;
+
+    font-size:18px;
+
+    line-height:38px;
+
+    text-align:justify;
+
+}
+
+
+
+
+
+
+/* ================= FACTS ================= */
+
+
+.facts{
+
+    padding:100px 8%;
+
+    background:#f8fbff;
+
+}
+
+
+
+.top6{
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:30px;
+
+}
+
+
+
+.top7{
+
+    background:white;
+
+    padding:40px 30px;
+
+    text-align:center;
+
+    border-radius:20px;
+
+    box-shadow:
+    0 10px 25px rgba(0,0,0,.08);
+
+    transition:.4s;
+
+}
+
+
+
+.top7:hover{
+
+    transform:translateY(-12px);
+
+}
+
+
+
+.top7 h1{
+
+    color:#0d6efd;
+
+    font-size:50px;
+
+    margin-bottom:20px;
+
+}
+
+
+
+.top7 p{
+
+    color:#555;
+
+    line-height:30px;
+
+}
+
+
+
+
+
+/* ================= FAQ ================= */
+
+
+.faq{
+
+    width:850px;
+
+    margin:30px auto;
+
+    border:2px solid #ddd;
+
+    border-radius:12px;
+
+    background:white;
+
+}
+
+
+
+.question{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:20px 25px;
+
+    font-size:20px;
+
+    font-weight:600;
+
+}
+
+
+
+.btn{
+
+    width:35px;
+
+    height:35px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:#0d6efd;
+
+    color:white;
+
+    font-size:22px;
+
+}
+
+
+
+.answer{
+
+    padding:20px 25px;
+
+    color:#555;
+
+    line-height:30px;
+
+}
+
+
+
+
+
+
+/* ================= FOOTER ================= */
+
+
+footer{
+    margin-top:80px;
+    background:#111;
+    color:white;
+    padding:50px;
+}
+
+
+
+.copyright{
+
+    text-align:center;
+
+}
+
+
+.copyright p{
+
+    color:#bbb;
+
+}
+</style>
+<body>
+<header>
+    <nav>
+
+        <h1 class="top1">AI LEARN</h1>
+
+        <button id="btn">☰</button>
+
+        <div class="menu" id="menu">
+
+            <a href="index.html">Home</a>
+            <a href="aipage2.html">AI Basics</a>
+            <a href="aipage3.html">AI Technologies</a>
+            <a href="aipage4.html">AI Tools</a>
+            <a href="aipage5.html">AI Applications</a>
+            <a href="machine.html">Machine Learning</a>
+            <a href="contact.html">Contact</a>
+
+            <button id="theme">🌙</button>
+
+        </div>
+
+    </nav>
+</header>
+
+
+
+<div id="cursor"></div>
+
+<div id="progress-bar"></div>
+
+<button id="scrollTop">↑</button>
+
+
+
+
+
+<!-- HERO SECTION -->
+
+
+<section class="application-hero">
+
+
+<div class="hero-content">
+
+
+<h5>
+Explore The World Of Artificial Intelligence
+</h5>
+
+
+<h1>
+Machine Learning
+<br>
+<span>Technology</span>
+</h1>
+
+
+<p>
+
+Machine Learning is one of the most important branches of Artificial
+Intelligence that allows computers to learn from experience and improve
+their performance automatically.
+
+Unlike traditional programming where humans provide every instruction,
+Machine Learning systems analyze large amounts of data, discover hidden
+patterns, and make intelligent decisions without being explicitly programmed.
+
+Today Machine Learning is used in recommendation systems, healthcare,
+finance, cybersecurity, robotics, autonomous vehicles, and many other
+modern technologies.
+
+</p>
+
+
+
+<div class="hero-btn">
+
+<button id="now">
+Explore Machine Learning
+</button>
+
+
+<button id="won">
+Learn More
+</button>
+
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+<!-- INTRODUCTION -->
+
+
+<section class="about-application">
+
+
+<div class="sec">
+
+
+<h1>
+Introduction
+</h1>
+
+
+<h2>
+What Is Machine Learning?
+</h2>
+
+
+
+<p>
+
+Machine Learning is a subset of Artificial Intelligence that focuses on
+creating systems capable of learning from data.
+
+The main goal of Machine Learning is to allow computers to identify
+patterns, understand information, and make accurate predictions without
+human intervention.
+
+Machine Learning models improve their performance by analyzing more data
+and learning from previous experiences.
+
+For example, when YouTube recommends videos according to your interests,
+or when email services detect spam messages, Machine Learning algorithms
+are working behind the scenes.
+
+</p>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+<!-- WHY MACHINE LEARNING -->
+
+
+<section class="why-ai">
+
+
+<div class="sec">
+
+
+<h1>
+Importance
+</h1>
+
+
+<h2>
+Why Machine Learning Is Important?
+</h2>
+
+
+
+<p>
+
+Machine Learning has become an essential technology because it helps
+organizations analyze huge amounts of data and make faster decisions.
+
+Businesses use Machine Learning to understand customers, predict market
+trends, improve security, and automate complex tasks.
+
+In healthcare, ML helps doctors identify diseases and analyze medical
+images.
+
+In transportation, it supports self-driving vehicles and intelligent
+traffic systems.
+
+Machine Learning is changing the way humans interact with technology
+and creating smarter solutions for everyday problems.
+
+</p>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- TYPES OF MACHINE LEARNING -->
+
+
+<section class="application-details">
+
+
+
+<div class="sec">
+
+
+<h1>
+Types
+</h1>
+
+
+<h2>
+Types Of Machine Learning
+</h2>
+
+
+
+<p>
+
+Machine Learning is divided into different categories depending on how
+the system learns from available data.
+
+</p>
+
+
+</div>
+
+
+
+
+
+<div class="application-box">
+
+
+<div class="application-image">
+
+<img src="images/supervised.jpg">
+
+</div>
+
+
+
+<div class="application-content">
+
+
+<h2>
+Supervised Learning
+</h2>
+
+
+
+<p>
+
+Supervised Learning is a method where machines learn using labeled data.
+
+The algorithm receives input data along with correct answers and learns
+the relationship between them.
+
+After training, the model can predict results for new unknown data.
+
+Examples:
+
+<br>
+
+• Email spam detection
+<br>
+• Weather prediction
+<br>
+• House price prediction
+<br>
+• Medical diagnosis
+
+</p>
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<div class="application-box reverse">
+
+
+<div class="application-content">
+
+
+<h2>
+Unsupervised Learning
+</h2>
+
+
+
+<p>
+
+Unsupervised Learning allows machines to find patterns and structures
+from data without predefined labels.
+
+The system analyzes information and discovers hidden relationships.
+
+Examples:
+
+<br>
+
+• Customer segmentation
+<br>
+• Product recommendations
+<br>
+• Data grouping
+<br>
+• Market analysis
+
+</p>
+
+
+
+</div>
+
+
+
+<div class="application-image">
+
+<img src="images/unsupervised.jpg">
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<div class="application-box">
+
+
+<div class="application-image">
+
+<img src="images/reinforcement.jpg">
+
+</div>
+
+
+
+<div class="application-content">
+
+
+<h2>
+Reinforcement Learning
+</h2>
+
+
+
+<p>
+
+Reinforcement Learning is a learning method where an AI agent learns by
+interacting with an environment.
+
+The system receives rewards for correct actions and improves through
+experience.
+
+Examples:
+
+<br>
+
+• Game playing AI
+<br>
+• Robotics
+<br>
+• Self-driving vehicles
+<br>
+• Automated decision systems
+
+</p>
+
+
+
+</div>
+
+
+</div>
+
+
+
+</section>
+
+
+
+
+
+
+
+
+<!-- MACHINE LEARNING PROCESS -->
+
+
+<section class="about-application">
+
+
+<div class="sec">
+
+
+<h1>
+Process
+</h1>
+
+
+<h2>
+How Machine Learning Works?
+</h2>
+
+
+
+<p>
+
+
+Machine Learning follows a series of steps to create an intelligent model.
+
+
+<br><br>
+
+
+<b>
+1. Data Collection
+</b>
+
+<br>
+
+The first step is collecting large amounts of useful data from different
+sources.
+
+
+<br><br>
+
+
+<b>
+2. Data Preparation
+</b>
+
+<br>
+
+Collected data is cleaned and organized so that machines can understand it.
+
+
+<br><br>
+
+
+<b>
+3. Model Training
+</b>
+
+<br>
+
+Algorithms analyze data and learn patterns to create a machine learning model.
+
+
+<br><br>
+
+
+<b>
+4. Testing And Prediction
+</b>
+
+<br>
+
+The trained model is tested and then used to make predictions on new data.
+
+
+</p>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- REAL WORLD APPLICATIONS -->
+
+
+<section class="application-details">
+
+
+<div class="sec">
+
+<h1>
+Examples
+</h1>
+
+
+<h2>
+Real World Uses Of Machine Learning
+</h2>
+
+</div>
+
+
+
+<div class="application-box">
+
+
+<div class="application-content">
+
+
+<h2>
+Recommendation Systems
+</h2>
+
+
+<p>
+
+Netflix, YouTube, Amazon, and Spotify use Machine Learning to analyze
+user behavior and recommend content or products according to interests.
+
+</p>
+
+
+</div>
+
+
+
+<div class="application-image">
+
+<img src="images/recommendation.jpg">
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="application-box reverse">
+
+
+<div class="application-image">
+
+<img src="images/security.jpg">
+
+</div>
+
+
+<div class="application-content">
+
+
+<h2>
+Fraud Detection
+</h2>
+
+
+<p>
+
+Banks use Machine Learning algorithms to detect unusual transactions
+and prevent financial fraud.
+
+</p>
+
+
+</div>
+
+
+</div>
+
+
+
+</section>
+
+
+
+
+
+
+
+<!-- FACTS -->
+
+
+<section class="facts">
+
+
+<div class="sec">
+
+<h1>
+Facts
+</h1>
+
+
+<h2>
+Interesting Machine Learning Facts
+</h2>
+
+</div>
+
+
+<div class="top6">
+
+
+<div class="top7">
+
+<h1>
+1959
+</h1>
+
+<p>
+Arthur Samuel introduced the term Machine Learning.
+</p>
+
+</div>
+
+
+
+<div class="top7">
+
+<h1>
+Data
+</h1>
+
+<p>
+Machine Learning systems improve by learning from data.
+</p>
+
+</div>
+
+
+
+<div class="top7">
+
+<h1>
+AI
+</h1>
+
+<p>
+Machine Learning is a major part of Artificial Intelligence.
+</p>
+
+</div>
+
+
+
+<div class="top7">
+
+<h1>
+Future
+</h1>
+
+<p>
+Machine Learning will power future intelligent systems.
+</p>
+
+</div>
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+<!-- FAQ -->
+
+
+<section>
+
+
+<div class="faq">
+
+<div class="question">
+
+What is Machine Learning?
+
+<button class="btn">+</button>
+
+</div>
+
+
+<div class="answer">
+
+Machine Learning is a branch of AI that allows computers to learn from
+data and improve automatically.
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="faq">
+
+<div class="question">
+
+What is the difference between AI and Machine Learning?
+
+<button class="btn">+</button>
+
+</div>
+
+
+<div class="answer">
+
+AI is the complete field of making machines intelligent, while Machine
+Learning is a technique that helps machines learn from data.
+
+</div>
+</div>
+
+<div class="faq">
+
+<div class="question">
+
+Which language is used for Machine Learning?
+
+<button class="btn">+</button>
+
+</div>
+
+<div class="answer">
+
+Python is the most popular language for Machine Learning because of its
+powerful libraries like TensorFlow, PyTorch, and Scikit-learn.
+
+</div>
+
+</div>
+</section>
+
+<footer>
+
+<div class="copyright">
+
+<p>
+© 2026 AI Learn. All Rights Reserved.
+</p>
+
+
+</div>
+
+
+</footer>
+</body>
+<script>
+    document.querySelectorAll(".btn")
+        .forEach(function (btn) {
+            btn.onclick = function () {
+                var code = btn.parentElement.parentElement
+                code.classList.toggle("active")
+                if (code.classList.contains("active")) {
+                    btn.innerHTML = "-";
+                } else {
+                    btn.innerHTML = "+";
+                }
+            }
+        })
+</script>
+</html>
