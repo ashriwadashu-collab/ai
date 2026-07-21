@@ -1,0 +1,1300 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <title>AI basics</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+        scroll-behavior: smooth;
+    }
+
+
+    .dark {
+        background: black;
+        color: white;
+    }
+
+
+    #cursor {
+        width: 20px;
+        height: 20px;
+        background: #0d6efd;
+        border-radius: 50%;
+        position: fixed;
+        left: 0;
+        top: 0;
+        pointer-events: none;
+        transition: 0.08s;
+        z-index: 99999;
+    }
+
+    #progress-bar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 0%;
+        height: 5px;
+        background: #0d6efd;
+        z-index: 9999;
+    }
+
+
+    #scrollTop {
+        position: fixed;
+        right: 25px;
+        bottom: 25px;
+
+        width: 55px;
+        height: 55px;
+
+        border: none;
+        border-radius: 50%;
+
+        background: #0d6efd;
+        color: #fff;
+
+        font-size: 22px;
+        cursor: pointer;
+
+        display: none;
+
+        transition: .3s;
+    }
+
+    #scrollTop:hover {
+        transform: translateY(-8px);
+    }
+
+    nav {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        height: 80px;
+        background: rgb(249, 248, 248);
+        border: none;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 80px;
+        z-index: 9999;
+    }
+
+    #btn {
+        display: none;
+        background: none;
+        border: none;
+        color: black;
+        cursor: pointer;
+        font-size: 25px;
+    }
+
+    .menu a {
+        text-decoration: none;
+        color: black;
+        font-size: 20px;
+        margin: 10px;
+    }
+
+    .top1 {
+        font-size: 30px;
+        color: blue;
+    }
+
+    .menu {
+        display: flex;
+        gap: 30px;
+    }
+
+    #theme {
+        background: none;
+        border: none;
+        font-size: 25px;
+        cursor: pointer;
+        padding-left: 200px;
+    }
+
+    .slider {
+        display: flex;
+        align-items: center;
+        gap: 60px;
+        width: 90%;
+        margin: 120px auto 0;
+    }
+
+
+    .slider img {
+        width: 650px;
+        height: 460px;
+        object-fit: cover;
+        flex-shrink: 0;
+        border-radius: 20px;
+    }
+
+
+    #testa {
+        font-size: 50px;
+        text-transform: capitalize;
+        margin-bottom: 5px;
+        color: blue;
+        height: 60px;
+    }
+
+    .not p {
+        font-size: 18px;
+        text-transform: capitalize;
+        line-height: 45px;
+    }
+
+    .night {
+        display: flex;
+        justify-content: space-between;
+        padding: 70px 60px;
+        gap: 60px;
+    }
+
+    .nt1 {
+        background: #fff;
+        border: 2px solid #ddd;
+        border-radius: 15px;
+        padding: 30px;
+        text-align: center;
+        transition: .4s;
+        margin-top: 40px;
+    }
+
+    .nt1:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, .12);
+    }
+
+
+    .nt1 h1 {
+        padding-bottom: 10px;
+        color: blue;
+    }
+
+    .nt1 p {
+        line-height: 35px;
+        text-transform: capitalize;
+    }
+
+    .nt2 p {
+        line-height: 35px;
+        text-transform: capitalize;
+    }
+
+
+    .nt2 h1 {
+        padding-bottom: 10px;
+        color: blue;
+    }
+
+    .nt2 {
+        background: #fff;
+        border: 2px solid #ddd;
+        border-radius: 15px;
+        padding: 30px;
+        text-align: center;
+        transition: .4s;
+        margin-top: 40px;
+    }
+
+    .nt2:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, .12);
+    }
+
+
+    .suru1 h1 {
+        text-align: center;
+        text-transform: capitalize;
+        margin-bottom: 10px;
+        color: blue;
+    }
+
+    .suru1 p {
+        text-align: center;
+        line-height: 35px;
+    }
+
+    .suru2 h2 {
+        text-align: center;
+        text-transform: capitalize;
+        margin-bottom: -30px;
+        color: blue;
+        margin-top: 50px;
+        font-size: 40px;
+    }
+
+
+    .suru3 {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        padding: 40px 80px;
+        gap: 60px;
+    }
+
+
+    .suru4 {
+        background: #fff;
+        border: 2px solid #ddd;
+        border-radius: 15px;
+        padding: 30px;
+        text-align: center;
+        transition: .4s;
+        margin-top: 40px;
+    }
+
+    .suru4:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, .12);
+    }
+
+
+    .suru4 h1 {
+        padding-bottom: 10px;
+        color: blue;
+        font-size: 25px;
+    }
+
+    .suru4 p {
+        line-height: 35px;
+        text-transform: capitalize;
+    }
+
+
+    .suru5 h2 {
+        text-align: center;
+        text-transform: capitalize;
+        margin-bottom: -30px;
+        color: blue;
+        margin-top: 50px;
+        font-size: 40px;
+    }
+
+    .suru6 {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        padding: 40px 80px;
+        gap: 60px;
+    }
+
+
+    .suru7 {
+        background: #fff;
+        border: 2px solid #ddd;
+        border-radius: 15px;
+        padding: 30px;
+        text-align: center;
+        transition: .4s;
+        margin-top: 40px;
+    }
+
+    .suru7:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, .12);
+    }
+
+
+    .suru7 h1 {
+        padding-bottom: 10px;
+        color: blue;
+        font-size: 25px;
+    }
+
+    .suru7 p {
+        line-height: 35px;
+        text-transform: capitalize;
+    }
+
+
+    .suru8 {
+        margin: auto;
+        display: block;
+        background: #fff;
+        border: 2px solid #ddd;
+        border-radius: 15px;
+        padding: 30px;
+        text-align: center;
+        transition: .4s;
+        margin-top: 40px;
+        width: 450px;
+        height: auto;
+    }
+
+    .suru8:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, .12);
+    }
+
+    .suru9 h1 {
+        text-transform: capitalize;
+        padding-bottom: 20px;
+        color: blue;
+    }
+
+    .suru10 {
+        text-transform: capitalize;
+        margin-bottom: -50px;
+    }
+
+    .suru10 h2 {
+        color: purple;
+        padding-bottom: 5px;
+    }
+
+    .suru10 p {
+        padding-bottom: 80px;
+    }
+
+
+    .gf h2 {
+        text-align: center;
+        text-transform: capitalize;
+        margin-bottom: -30px;
+        color: blue;
+        margin-top: 50px;
+        font-size: 40px;
+    }
+
+
+
+    .bf {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        padding: 40px 80px;
+        gap: 60px;
+    }
+
+
+    .cf {
+        background: #fff;
+        border: 2px solid #ddd;
+        border-radius: 15px;
+        padding: 30px;
+        text-align: center;
+        transition: .4s;
+        margin-top: 40px;
+    }
+
+    .cf:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, .12);
+    }
+
+
+    .cf h1 {
+        padding-bottom: 10px;
+        color: blue;
+        font-size: 25px;
+    }
+
+    .cf p {
+        line-height: 35px;
+        text-transform: capitalize;
+    }
+
+    .advan {
+        display: flex;
+        justify-content: space-between;
+        padding: 40px 60px;
+        gap: 40px;
+    }
+
+
+    .adva {
+        background: #fff;
+        border: 2px solid #ddd;
+        border-radius: 15px;
+        padding: 30px;
+        text-align: center;
+        transition: .4s;
+        margin-top: 40px;
+    }
+
+    .adva:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, .12);
+    }
+
+
+    .adva h2 {
+        padding-bottom: 10px;
+        color: blue;
+        font-size: 30px;
+    }
+
+    .adva p {
+        line-height: 45px;
+        text-transform: capitalize;
+    }
+
+
+    footer {
+        background: #111;
+        color: #fff;
+        margin-top: 80px;
+    }
+
+    .footer-container {
+        width: 90%;
+        margin: auto;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 40px;
+        padding: 60px 0;
+        text-transform: capitalize;
+    }
+
+    .footer-box h2 {
+        color: #0d6efd;
+        margin-bottom: 20px;
+        font-size: 28px;
+    }
+
+    .footer-box p {
+        color: #ddd;
+        margin: 12px 0;
+        line-height: 28px;
+        transition: .5s;
+        cursor: pointer;
+    }
+
+    .footer-box p:hover {
+        color: #0d6efd;
+    }
+
+    .copyright {
+        border-top: 1px solid #333;
+        text-align: center;
+        padding: 20px;
+    }
+
+    .copyright p {
+        color: #bbb;
+        font-size: 16px;
+    }
+
+    .last {
+        text-transform: capitalize;
+        text-align: center;
+        font-size: 30px;
+        color: blue;
+        margin-top: 20px;
+    }
+
+    .adv {
+        display: block;
+        margin: auto;
+        background: #fff;
+        border: 2px solid #ddd;
+        border-radius: 15px;
+        padding: 30px;
+        text-align: center;
+        transition: .4s;
+        margin-top: 40px;
+        width: 800px;
+        height: auto;
+    }
+
+    .adv:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, .12);
+    }
+
+    .adv p {
+        line-height: 45px;
+        text-transform: capitalize;
+    }
+
+    .faq-section {
+        width: 90%;
+        margin: 80px auto;
+    }
+
+    .faq-section h1 {
+        text-align: center;
+        font-size: 42px;
+        color: #0d6efd;
+        margin-bottom: 50px;
+    }
+
+    .faq {
+        width: 850px;
+        margin: 20px auto;
+        border: 2px solid #ddd;
+        border-radius: 12px;
+        overflow: hidden;
+        background: #fff;
+        transition: .3s;
+    }
+
+    .faq:hover {
+        box-shadow: 0 10px 25px rgba(0, 0, 0, .12);
+    }
+
+    .question {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 18px 25px;
+        cursor: pointer;
+        font-size: 20px;
+        font-weight: 600;
+    }
+
+    .answer {
+        display: none;
+        padding: 20px 25px;
+        border-top: 1px solid #ddd;
+        color: #555;
+        line-height: 30px;
+        font-size: 17px;
+    }
+
+    .faq.active .answer {
+        display: block;
+    }
+
+    .btn {
+        width: 35px;
+        height: 35px;
+        border: none;
+        border-radius: 50%;
+        background: #0d6efd;
+        color: #fff;
+        font-size: 22px;
+        cursor: pointer;
+    }
+
+
+    @media (max-width:768px) {
+
+        nav {
+            height: 70px;
+            padding: 0 20px;
+        }
+
+        .top1 {
+            font-size: 24px;
+        }
+
+        #btn {
+            display: block;
+            font-size: 28px;
+        }
+
+        .menu {
+            position: absolute;
+            top: 70px;
+            left: 0;
+            width: 100%;
+            background: #111;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: .5s;
+            padding: 0;
+        }
+
+        .menu.show {
+            max-height: 500px;
+            padding: 20px 0;
+        }
+
+        .menu a {
+            color: #fff;
+            font-size: 20px;
+        }
+
+        #theme {
+            padding-left: 0;
+            color: #fff;
+        }
+
+        .slider {
+            flex-direction: column;
+            width: 95%;
+            margin-top: 100px;
+            text-align: center;
+        }
+
+        .slider img {
+            width: 100%;
+            height: auto;
+        }
+
+        .not h1 {
+            font-size: 35px;
+        }
+
+        .not p {
+            font-size: 16px;
+            line-height: 30px;
+        }
+
+        .night {
+            flex-direction: column;
+            padding: 20px;
+        }
+
+        .suru3,
+        .suru6,
+        .bf {
+            grid-template-columns: 1fr;
+            padding: 20px;
+            gap: 20px;
+        }
+
+        .suru8 {
+            width: 90%;
+            padding: 20px;
+        }
+
+        .advan {
+            flex-direction: column;
+            padding: 20px;
+        }
+
+        .adva {
+            width: 100%;
+        }
+
+        .adva p {
+            text-align: left;
+            line-height: 35px;
+            margin: 30px;
+        }
+
+        .footer-container {
+            grid-template-columns: 1fr;
+            padding: 40px 20px;
+            gap: 30px;
+            text-align: center;
+        }
+
+        .suru1,
+        .gf,
+        .suru2,
+        .suru5 {
+            padding: 0 15px;
+        }
+
+        .suru1 p {
+            line-height: 30px;
+        }
+
+        .suru4,
+        .suru7,
+        .cf,
+        .nt1,
+        .nt2 {
+            padding: 20px;
+        }
+
+        .suru4 h1,
+        .suru7 h1,
+        .cf h1 {
+            font-size: 22px;
+        }
+
+        .faq-section {
+            width: 92%;
+        }
+
+        .faq-section h1 {
+            font-size: 32px;
+        }
+
+        .faq {
+            width: 100%;
+        }
+
+        .question {
+            font-size: 17px;
+            padding: 18px;
+        }
+
+        .answer {
+            font-size: 15px;
+            line-height: 28px;
+        }
+
+
+        .adv {
+            width: 90%;
+            margin: 30px auto;
+        }
+    }
+</style>
+<header>
+    <nav>
+        <h1 class="top1">AI LEARN</h1>
+        <button id="btn">☰</button>
+        <div class="menu" id="menu">
+            <a href="index.html">Home</a>
+            <a href="aipage2.html">AI basics</a>
+            <a href="aipage3.html">AI technologies</a>
+            <a href="aipage4.html">AI tools</a>
+            <a href="aipage5.html">AI Applications</a>
+            <a href="#">contact</a>
+            <button id="theme">🌙</button>
+        </div>
+    </nav>
+</header>
+
+<body>
+
+    <div id="cursor"></div>
+
+    <div id="progress-bar"></div>
+
+    <button id="scrollTop">↑</button>
+
+    <div class="slider">
+        <img id="slider" src="images/ai.png">
+        <div class="not">
+            <h1 id="testa"></h1>
+            <p>Artificial Intelligence (AI) is a branch of computer science that enables machines to perform tasks that
+                normally require human intelligence. AI systems can learn from data, recognize patterns, understand
+                language, solve problems, and make decisions. Today, AI is widely used in everyday life through
+                chatbots, voice assistants, recommendation systems, image recognition, and self-driving technologies.
+            </p>
+        </div>
+    </div>
+    </div>
+
+    <div class="night">
+        <div class="nt1">
+            <h1>1. what is AI</h1>
+            <p>Artificial Intelligence (AI) is a technology that allows computers <br>and machines
+                to think, learn, and solve problems like humans. AI uses data and <br>algorithms to
+                make intelligent decisions and perform tasks automatically. Today,<br> AI is used in
+                chatbots, voice assistants, healthcare, education, banking, <br>transportation, and
+                many other fields.</p>
+        </div>
+        <div class="nt2">
+            <h1>Key Points</h1>
+
+            <p>✔ AI simulates human intelligence in machines.</p>
+
+            <p>✔ AI can analyze large amounts of data quickly.</p>
+
+            <p>✔ AI improves accuracy and automates repetitive tasks.</p>
+
+            <p>✔ Machine Learning and Deep Learning are important branches of AI.</p>
+
+            <p>✔ AI is transforming industries and everyday life worldwide.</p>
+        </div>
+    </div>
+
+
+    <div class="suru1">
+        <h1>2. history of Artificial intelligence</h1>
+        <p>Artificial Intelligence (AI) began in the 1950s when researchers started exploring how machines could
+            <br>simulate human intelligence. In 1956, computer scientist John McCarthy introduced the term
+            "Artificial<br> Intelligence" at the Dartmouth Conference, marking the official birth of AI as a field of
+            study. Over the<br> decades, AI has evolved through advances in machine learning, deep learning, and
+            powerful computing<br> system Today, AI is transforming industries such as healthcare, education, finance,
+            transportation,<br> and entertainment, making technology smarter and more efficient.
+        </p>
+    </div>
+    </div>
+
+    <div class="suru2">
+        <h2>AI timiline</h2>
+    </div>
+    </div>
+
+
+    <div class="suru3">
+        <div class="suru4">
+            <h1> 1950 = The Turing Test</h1>
+            <p>Alan Turing introduced the concept of machine intelligence and proposed the famous Turing Test.</p>
+        </div>
+
+        <div class="suru4">
+            <h1> 1956 = Birth of AI</h1>
+            <p>The term Artificial Intelligence was officially introduced by John McCarthy at the Dartmouth Conference.
+            </p>
+        </div>
+
+        <div class="suru4">
+            <h1> 1966 = ELIZA Chatbot</h1>
+            <p>ELIZA became one of the first AI chatbots capable of basic human-like conversations.</p>
+        </div>
+
+        <div class="suru4">
+            <h1> 1997 = Deep Blue Victory</h1>
+            <p>IBM's Deep Blue defeated world chess champion Garry Kasparov, marking a major AI milestone.</p>
+        </div>
+
+        <div class="suru4">
+            <h1> 2012 = Deep Learning Breakthrough</h1>
+            <p>Advances in deep learning significantly improved image recognition and speech processing.</p>
+        </div>
+
+        <div class="suru4">
+            <h1> 2022 = Generative AI</h1>
+            <p>Modern AI systems like ChatGPT demonstrated powerful capabilities in writing, coding, learning, and
+                creativity</p>
+        </div>
+    </div>
+
+    <div class="suru5">
+        <h2>3. types of AI</h2>
+    </div>
+    </div>
+
+    <div class="suru6">
+        <div class="suru7">
+            <h1>narrow AI (weak AI)</h1>
+            <p>Narrow AI is an AI system built to perform one specific task. It works within a
+                limited area and cannot think like humans. Examples include ChatGPT, Siri,
+                Alexa, Google Maps, and Netflix recommendations.</p>
+        </div>
+
+        <div class="suru7">
+            <h1>general AI (strong AI)</h1>
+            <p>General AI is a type of AI that can think, learn, and solve problems like a
+                human. It can perform many different tasks instead of just one specific task.
+                This type of AI does not exist yet and remains a future goal of AI research.</p>
+        </div>
+
+        <div class="suru7">
+            <h1>super AI</h1>
+            <p>Super AI is an advanced form of AI that would be more intelligent than humans.
+                It could perform every task with greater speed, accuracy, and creativity.
+                However, Super AI has not been developed yet and remains a future concept.</p>
+        </div>
+    </div>
+
+    <div class="suru8">
+        <div class="suru9">
+            <h1>other classification</h1>
+            <div class="suru10">
+                <h2>1. reactive machines</h2>
+                <p>Reactive Machines are the simplest type of AI. They can only respond to current situations and cannot
+                    store past experiences or learn from them. Example: IBM Deep Blue.</p>
+            </div>
+
+            <div class="suru10">
+                <h2>2. limited memory</h2>
+                <p>Limited Memory AI can learn from past data for a short time to make better decisions. Example:
+                    Self-driving cars.</p>
+            </div>
+
+            <div class="suru10">
+                <h2>3. theory of mind</h2>
+                <p>Theory of Mind AI is a future concept where AI will understand human emotions, beliefs, and
+                    intentions. It does not exist yet.</p>
+            </div>
+
+            <div class="suru10">
+                <h2>4. self-aware AI</h2>
+                <p>Self-Aware AI is a hypothetical AI with consciousness and self-awareness. It is still a theoretical
+                    concept.</p>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="gf">
+        <h2>4. how AI works</h2>
+    </div>
+    </div>
+
+    <div class="bf">
+        <div class="cf">
+            <h1>1. data collection</h1>
+            <p>AI gathers data from sources such as websites, sensors, images, videos, and user interactions.</p>
+        </div>
+
+        <div class="cf">
+            <h1>2. Data Preparation</h1>
+            <p>The collected data is cleaned, organized, and prepared for accurate AI training.</p>
+        </div>
+
+        <div class="cf">
+            <h1>3. model training</h1>
+            <p>AI algorithms learn from the prepared data to recognize patterns and improve performance.</p>
+        </div>
+
+        <div class="cf">
+            <h1>4. Prediction & Decision Making</h1>
+            <p>The trained model analyzes new data and provides predictions or intelligent decisions.</p>
+        </div>
+
+        <div class="cf">
+            <h1>5. Continuous Learning</h1>
+            <p>AI continuously improves its accuracy by learning from new data and user feedback.</p>
+        </div>
+
+        <div class="cf">
+            <h1>6. Real-World Applications</h1>
+            <p>AI is deployed in healthcare, education, finance, robotics, transportation, and many other industries.
+            </p>
+        </div>
+    </div>
+
+    <div class="advan">
+        <div class="adva">
+            <h2>Advantages of AI</h2>
+            <p>1. Fast Decision Making - Makes quick and accurate decisions using large amounts of data.</p>
+
+            <p>2. High Accuracy - Performs tasks with fewer errors and better precision.</p>
+
+            <p>3. 24/7 Availability - Works continuously without rest, breaks, or interruptions.</p>
+
+            <p>4. Automation - Automates repetitive tasks and saves valuable time.</p>
+
+            <p>5. Reduces Human Error - Minimizes mistakes by following programmed instructions carefully.</p>
+
+            <p>6. Handles Large Data - Processes huge amounts of data quickly and efficiently.</p>
+
+            <p>7. Improves Productivity - Increases work efficiency and overall performance.</p>
+
+            <p>8. Better Customer Support - Provides instant responses through AI chatbots and assistants.</p>
+        </div>
+
+        <div class="adva">
+            <h2>Disadvantages of AI</h2>
+
+            <p>1. High Development Cost - Requires expensive technology, software, and skilled professionals.</p>
+
+            <p>2. Job Displacement - May replace human workers in repetitive job roles.</p>
+
+            <p>3. Privacy Concerns - Collects personal data, creating privacy and security risks.</p>
+
+            <p>4. Data Bias - Produces unfair results when trained with biased data.</p>
+
+            <p>5. Lack of Human Emotions - Cannot understand emotions, empathy, or human feelings.</p>
+
+            <p>6. Security Risks - Can be misused for cyberattacks and harmful activities.</p>
+
+            <p>7. Technology Dependence - People may rely too much on AI systems.</p>
+
+            <p>8. Requires Quality Data - Needs accurate and high-quality data for better performance.</p>
+        </div>
+    </div>
+
+
+    <div class="last">
+        <h2>Examples of AI</h2>
+    </div>
+    </div>
+
+    <div class="adv">
+
+        <p>1. ChatGPT - An AI chatbot that answers questions, generates content, and assists with various tasks.</p>
+
+        <p>2. Google Maps - Uses AI to provide accurate navigation, traffic updates, and route optimization.</p>
+
+        <p>3. Siri - Apple's AI-powered virtual assistant that performs tasks through voice commands.</p>
+
+        <p>4. Alexa - Amazon's intelligent voice assistant for smart home control and everyday assistance.</p>
+
+        <p>5. Netflix Recommendations - AI suggests personalized movies and TV shows based on viewing preferences.</p>
+
+        <p>6. YouTube Recommendations - AI recommends relevant videos according to watch history and interests.</p>
+
+        <p>7. Face Unlock - AI-powered facial recognition technology that securely unlocks smartphones and devices.</p>
+
+        <p>8. Google Translate - Uses AI to translate text and speech accurately across multiple languages.</p>
+    </div>
+    </div>
+
+
+    <section class="faq-section">
+
+        <h1>7. Frequently Asked Questions</h1>
+
+        <div class="faq">
+            <div class="question">
+                1. What is Artificial Intelligence (AI)
+                <button class="btn">+</button>
+            </div>
+            <div class="answer">
+                Artificial Intelligence (AI) is a technology that enables machines to learn, think, solve problems, and
+                make decisions similar to humans.
+            </div>
+        </div>
+
+        <div class="faq">
+            <div class="question">
+                2. How does AI work
+                <button class="btn">+</button>
+            </div>
+            <div class="answer">
+                AI works by collecting data, training machine learning models, recognizing patterns, and making
+                predictions or decisions based on the data.
+            </div>
+        </div>
+
+        <div class="faq">
+            <div class="question">
+                3. What are the main types of AI
+                <button class="btn">+</button>
+            </div>
+            <div class="answer">
+                The three main types of AI are Narrow AI (Weak AI), General AI (Strong AI), and Super AI.
+            </div>
+        </div>
+
+        <div class="faq">
+            <div class="question">
+                4. Where is AI used in daily life
+                <button class="btn">+</button>
+            </div>
+            <div class="answer">
+                AI is used in smartphones, chatbots, voice assistants, online shopping, healthcare, banking, education,
+                transportation, and entertainment.
+            </div>
+        </div>
+
+        <div class="faq">
+            <div class="question">
+                5. Is AI replacing human jobs
+                <button class="btn">+</button>
+            </div>
+            <div class="answer">
+                AI can automate repetitive tasks, but it also creates new job opportunities in AI development, data
+                science, cybersecurity, and robotics.
+            </div>
+        </div>
+
+        <div class="faq">
+            <div class="question">
+                6. What are the advantages of AI
+                <button class="btn">+</button>
+            </div>
+            <div class="answer">
+                AI offers fast decision-making, high accuracy, automation, 24/7 availability, improved productivity, and
+                better customer support.
+            </div>
+        </div>
+
+        <div class="faq">
+            <div class="question">
+                7. What are the disadvantages of AI
+                <button class="btn">+</button>
+            </div>
+            <div class="answer">
+                AI has some challenges, including high development cost, privacy concerns, data bias, job displacement,
+                and dependence on technology.
+            </div>
+        </div>
+
+        <div class="faq">
+            <div class="question">
+                8. Can AI think like humans
+                <button class="btn">+</button>
+            </div>
+            <div class="answer">
+                No. Current AI can perform specific tasks intelligently, but it does not have human emotions,
+                consciousness, or self-awareness.
+            </div>
+        </div>
+
+        <div class="faq">
+            <div class="question">
+                9. Is ChatGPT an example of AI
+                <button class="btn">+</button>
+            </div>
+            <div class="answer">
+                Yes. ChatGPT is a Generative AI chatbot that can answer questions, generate content, write code, and
+                assist with learning.
+            </div>
+        </div>
+
+        <div class="faq">
+            <div class="question">
+                10. What is the future of AI
+                <button class="btn">+</button>
+            </div>
+            <div class="answer">
+                The future of AI includes smarter assistants, self-driving vehicles, advanced healthcare,
+                intelligent robots, personalized education, and many more innovative applications.
+            </div>
+        </div>
+        </div>
+    </section>
+
+
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-box">
+                <h2>AI Learn</h2>
+                <p>AI Learn is an educational platform designed to help beginners understand Artificial Intelligence
+                    through simple explanations, examples, and interactive learning content.</p>
+            </div>
+            <div class="footer-box">
+                <h2>Quick Links</h2>
+                <p>Home</p>
+                <p>AI basics</p>
+                <p>AI technologies</p>
+                <p>AI tools</p>
+                <p>contact</p>
+            </div>
+            <div class="footer-box">
+                <h2>resources</h2>
+                <p>blog</p>
+                <p>tutorials</p>
+                <p>projects</p>
+                <p>faq</p>
+                <p>glossary</p>
+            </div>
+            <div class="footer-box">
+                <h2>Contact</h2>
+                <p>Email : support@AIlearn.com</p>
+                <p>Phone : +91 9876543210</p>
+                <p>India</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>© 2026 AI Learn. All Rights Reserved.</p>
+        </div>
+    </footer>
+</body>
+
+<script>
+    var msg = "Learn Basics AI"
+
+    var i = 0
+
+    function typing() {
+        document.getElementById("testa").innerHTML += msg.charAt(i)
+
+        i++
+        if (i == msg.length) {
+            setTimeout(function () {
+                document.getElementById("testa").innerHTML = ""
+                i = 0
+            }, 3000)
+        }
+    }
+    setInterval(typing, 300)
+</script>
+
+<script>
+
+    var sliderImages = [
+        "images/ai.png",
+        "images/ai.png",
+        "images/ai.png",
+        "images/ai.png"
+    ];
+
+    var current = 0
+
+    setInterval(function () {
+
+        current++;
+
+        if (current >= sliderImages.length) {
+            current = 0
+        }
+
+        document.getElementById("slider").src = sliderImages[current]
+
+    }, 2000);
+
+</script>
+
+<script>
+    document.querySelectorAll(".btn")
+        .forEach(function (btn) {
+            btn.onclick = function () {
+                var code = btn.parentElement.parentElement
+                code.classList.toggle("active")
+                if (code.classList.contains("active")) {
+                    btn.innerHTML = "-";
+                } else {
+                    btn.innerHTML = "+";
+                }
+            }
+        })
+</script>
+
+<script>
+    var cursor = document.getElementById("cursor");
+
+    document.addEventListener("mousemove", function (e) {
+
+        cursor.style.left = e.clientX + "px";
+        cursor.style.top = e.clientY + "px";
+
+    });
+</script>
+
+<script>
+    var btn = document.getElementById("btn")
+    var menu = document.getElementById("menu")
+    btn.onclick = function () {
+        menu.classList.toggle("show")
+    }
+</script>
+
+<script>
+    var theme = document.getElementById("theme");
+
+    theme.onclick = function () {
+
+        document.body.classList.toggle("dark")
+
+        if (document.body.classList.contains("dark")) {
+            theme.innerHTML = "☀️"
+        }
+        else {
+            theme.innerHTML = "🌙"
+        }
+
+    }
+</script>
+
+<script>
+    const progressBar = document.getElementById("progress-bar");
+    const scrollBtn = document.getElementById("scrollTop");
+
+    window.addEventListener("scroll", function () {
+
+        let scroll = document.documentElement.scrollTop;
+
+        let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+
+        let progress = (scroll / height) * 100;
+
+        progressBar.style.width = progress + "%";
+
+        if (scroll > 300) {
+            scrollBtn.style.display = "block";
+        } else {
+            scrollBtn.style.display = "none";
+        }
+
+    });
+
+    scrollBtn.onclick = function () {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    };
+</script>
+
+</html>

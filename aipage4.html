@@ -1,0 +1,1285 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+        scroll-behavior: smooth;
+    }
+
+
+    .dark {
+        background: black;
+        color: white;
+    }
+
+
+    #cursor {
+        width: 20px;
+        height: 20px;
+        background: #0d6efd;
+        border-radius: 50%;
+        position: fixed;
+        left: 0;
+        top: 0;
+        pointer-events: none;
+        transition: 0.08s;
+        z-index: 99999;
+    }
+
+    #progress-bar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 0%;
+        height: 5px;
+        background: #0d6efd;
+        z-index: 9999;
+    }
+
+
+    #scrollTop {
+        position: fixed;
+        right: 25px;
+        bottom: 25px;
+
+        width: 55px;
+        height: 55px;
+
+        border: none;
+        border-radius: 50%;
+
+        background: #0d6efd;
+        color: #fff;
+
+        font-size: 22px;
+        cursor: pointer;
+
+        display: none;
+
+        transition: .3s;
+    }
+
+    #scrollTop:hover {
+        transform: translateY(-8px);
+    }
+
+    nav {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        height: 80px;
+        background: rgb(249, 248, 248);
+        border: none;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 80px;
+        z-index: 9999;
+    }
+
+    #btn {
+        display: none;
+        background: none;
+        border: none;
+        color: black;
+        cursor: pointer;
+        font-size: 25px;
+    }
+
+    .menu a {
+        text-decoration: none;
+        color: black;
+        font-size: 20px;
+        margin: 10px;
+    }
+
+    .top1 {
+        font-size: 30px;
+        color: blue;
+    }
+
+    .menu {
+        display: flex;
+        gap: 30px;
+    }
+
+    #theme {
+        background: none;
+        border: none;
+        font-size: 25px;
+        cursor: pointer;
+        padding-left: 200px;
+    }
+
+    .slider {
+        display: flex;
+        align-items: center;
+        gap: 60px;
+        width: 90%;
+        margin: 120px auto 0;
+    }
+
+
+    .slider img {
+        width: 650px;
+        height: 460px;
+        object-fit: cover;
+        flex-shrink: 0;
+        border-radius: 20px;
+    }
+
+
+    #testa {
+        font-size: 50px;
+        text-transform: capitalize;
+        margin-bottom: 5px;
+        color: blue;
+        height: 60px;
+    }
+
+    .not p {
+        font-size: 18px;
+        text-transform: capitalize;
+        line-height: 45px;
+    }
+
+    .top3 h1 {
+        text-align: center;
+        text-transform: capitalize;
+        font-size: 40px;
+        margin-top: 70px;
+    }
+
+    .top3 p {
+        text-align: center;
+        text-transform: capitalize;
+        font-size: 20px;
+        margin-top: 10px;
+    }
+
+    .top4 {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 100px;
+        padding: 20px 40px;
+    }
+
+    .top5 {
+        width: 350px;
+        background: #fff;
+        border: 2px solid #ddd;
+        border-radius: 15px;
+        padding: 30px;
+        text-align: center;
+        transition: .4s;
+    }
+
+    .top5:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, .12);
+    }
+
+
+    .top5 img {
+        width: 50px;
+    }
+
+    .suru2 {
+        width: 600px;
+        height: auto;
+        background: #fff;
+        border: 2px solid #ddd;
+        border-radius: 15px;
+        transition: .4s;
+        margin: 80px auto;
+        display: block;
+        text-align: center;
+    }
+
+    .suru2:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, .12);
+    }
+
+
+    .suru2 h1 {
+        color: blue;
+        text-transform: capitalize;
+        padding-top: 20px;
+        font-size: 40px;
+    }
+
+    .suru2 h4 {
+        text-transform: capitalize;
+        padding-bottom: 25px;
+        font-size: 20px;
+    }
+
+    .suru2 p {
+        padding-bottom: 10px;
+        text-transform: capitalize;
+    }
+
+    .suru1 {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        padding: 40px 60px;
+        gap: 20px;
+    }
+
+
+    .why-ai h1 {
+        text-align: center;
+        font-size: 40px;
+        color: blue;
+        text-transform: capitalize;
+        margin-bottom: 10px;
+    }
+
+
+    .why-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        padding: 30px 50px;
+        gap: 30px;
+
+    }
+
+    .why-card {
+        width: 350px;
+        background: #fff;
+        border: 2px solid #ddd;
+        border-radius: 15px;
+        padding: 30px;
+        text-align: center;
+        transition: .4s;
+        display: block;
+        margin: auto;
+    }
+
+    .why-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, .12);
+    }
+
+    .why-card h2 {
+        color: blue;
+        font-size: 22px;
+        margin-bottom: 15px;
+
+    }
+
+    .why-card p {
+        font-size: 17px;
+        line-height: 30px;
+        color: #555;
+    }
+
+    .skills-section {
+        margin-top: 40px;
+    }
+
+
+    .skills-section h1 {
+        text-align: center;
+        font-size: 40px;
+        color: blue;
+        text-transform: capitalize;
+        margin-bottom: 40px;
+
+    }
+
+
+    .skills-container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        padding: 30px 50px;
+        gap: 30px;
+
+    }
+
+
+    .skill-card {
+        width: 330px;
+        padding: 30px;
+        background: #fff;
+        border: 2px solid #ddd;
+        border-radius: 15px;
+        text-align: center;
+        transition: .4s;
+    }
+
+
+    .skill-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, .12);
+    }
+
+
+    .skill-card h2 {
+
+        color: blue;
+        font-size: 22px;
+        margin-bottom: 15px;
+
+    }
+
+
+    .skill-card p {
+        font-size: 16px;
+        line-height: 30px;
+        color: #555;
+
+    }
+
+
+    .application-section {
+        margin-top: 40px;
+        padding: 40px 60px;
+    }
+
+
+    .application-container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        padding: 30px 50px;
+        gap: 30px;
+    }
+
+
+    .app-card {
+        padding: 35px;
+        background: #fff;
+        border: 2px solid #ddd;
+        border-radius: 15px;
+        text-align: center;
+        font-size: 22px;
+        transition: .4s;
+    }
+
+
+    .app-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, .12);
+        color: blue;
+
+    }
+
+
+    .application-section h1 {
+        text-align: center;
+        font-size: 40px;
+        color: blue;
+        text-transform: capitalize;
+        margin-bottom: 40px;
+
+    }
+
+
+    .company-section {
+        margin-top: 40px;
+    }
+
+
+    .company-container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        padding: 30px 50px;
+        gap: 30px;
+
+    }
+
+
+    .company-card {
+        padding: 35px;
+        background: #fff;
+        border: 2px solid #ddd;
+        border-radius: 15px;
+        text-align: center;
+        font-size: 22px;
+        font-weight: 600;
+        transition: .4s;
+    }
+
+
+    .company-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, .12);
+        color: blue;
+    }
+
+    .company-section h1 {
+        text-align: center;
+        font-size: 40px;
+        color: blue;
+        text-transform: capitalize;
+        margin-bottom: 40px;
+    }
+
+
+    .future-section {
+        margin-top: 40px;
+    }
+
+
+    .future-section h1 {
+        text-align: center;
+        font-size: 40px;
+        color: blue;
+        margin-bottom: 40px;
+    }
+
+
+    .future-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+        padding: 30px 50px;
+    }
+
+
+    .future-card {
+        background: #fff;
+        border: 2px solid #ddd;
+        border-radius: 15px;
+        padding: 30px;
+        text-align: center;
+        transition: .4s;
+    }
+
+
+    .future-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, .12);
+    }
+
+    .future-card h2 {
+        color: blue;
+        font-size: 22px;
+        margin-bottom: 15px;
+    }
+
+    .future-card p {
+        color: #555;
+        line-height: 30px;
+    }
+
+    .resource-section {
+        margin-top: 40px;
+    }
+
+    .resource-section h1 {
+        text-align: center;
+        font-size: 40px;
+        color: blue;
+        text-transform: capitalize;
+        margin-bottom: 40px;
+    }
+
+    .resource-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+        padding: 30px 50px;
+    }
+
+    .resource-card {
+        background: #fff;
+        border: 2px solid #ddd;
+        border-radius: 15px;
+        padding: 30px;
+        text-align: center;
+        transition: .4s;
+    }
+
+    .resource-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, .12);
+    }
+
+    .resource-card h2 {
+        color: blue;
+        font-size: 22px;
+        margin-bottom: 15px;
+    }
+
+    .resource-card p {
+        font-size: 16px;
+        line-height: 30px;
+        color: #555;
+
+    }
+
+
+    footer {
+        background: #111;
+        color: #fff;
+        margin-top: 80px;
+    }
+
+    .footer-container {
+        width: 90%;
+        margin: auto;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 40px;
+        padding: 60px 0;
+        text-transform: capitalize;
+    }
+
+    .footer-box h2 {
+        color: #0d6efd;
+        margin-bottom: 20px;
+        font-size: 28px;
+    }
+
+    .footer-box p {
+        color: #ddd;
+        margin: 12px 0;
+        line-height: 28px;
+        transition: .5s;
+        cursor: pointer;
+    }
+
+    .footer-box p:hover {
+        color: #0d6efd;
+    }
+
+    .copyright {
+        border-top: 1px solid #333;
+        text-align: center;
+        padding: 20px;
+    }
+
+    .copyright p {
+        color: #bbb;
+        font-size: 16px;
+    }
+
+    @media (max-width:768px) {
+
+
+        body {
+            overflow-x: hidden;
+        }
+
+        nav {
+            height: 70px;
+            padding: 0 20px;
+        }
+
+        .top1 {
+            font-size: 24px;
+        }
+
+        #btn {
+            display: block;
+            font-size: 28px;
+        }
+
+        .menu {
+            position: absolute;
+            top: 70px;
+            left: 0;
+            width: 100%;
+            background: #111;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: .5s;
+            padding: 0;
+        }
+
+        .menu.show {
+            max-height: 500px;
+            padding: 20px 0;
+        }
+
+        .menu a {
+            color: #fff;
+            font-size: 20px;
+        }
+
+        #theme {
+            padding-left: 0;
+            color: #fff;
+        }
+
+        .slider {
+            width: 90%;
+            flex-direction: column;
+            gap: 30px;
+            margin-top: 100px;
+        }
+
+        #slider {
+            width: 100%;
+            height: 280px;
+        }
+
+        #testa {
+            font-size: 35px;
+            text-align: center;
+            height: 60px;
+        }
+
+        .not p {
+            font-size: 15px;
+            line-height: 30px;
+            text-align: center;
+        }
+
+        .top3 h1 {
+            font-size: 30px;
+            margin-top: 50px;
+        }
+
+        .top3 p {
+            font-size: 16px;
+            padding: 0 20px;
+        }
+
+        .top4 {
+            gap: 25px;
+            padding: 20px;
+        }
+
+
+        .top5 {
+            width: 100%;
+            padding: 25px;
+        }
+
+        .suru1 {
+            grid-template-columns: 1fr;
+            padding: 20px;
+            gap: 20px;
+        }
+
+
+        .suru2 {
+            width: 100%;
+            margin: 30px auto;
+            padding: 20px;
+        }
+
+
+        .suru2 h1 {
+            font-size: 30px;
+        }
+
+
+        .suru2 h4 {
+            font-size: 17px;
+        }
+
+
+        .suru2 p {
+            font-size: 14px;
+        }
+
+
+
+        .why-ai h1,
+        .skills-section h1,
+        .application-section h1,
+        .company-section h1,
+        .future-section h1,
+        .resource-section h1 {
+
+            font-size: 30px;
+            padding: 0 20px;
+
+        }
+
+        .why-container {
+            grid-template-columns: 1fr;
+            padding: 20px;
+        }
+
+
+        .why-card {
+            width: 100%;
+        }
+
+
+
+        /* Skills */
+
+        .skills-container {
+            grid-template-columns: 1fr;
+            padding: 20px;
+        }
+
+
+        .skill-card {
+            width: 100%;
+        }
+
+
+
+        /* Applications */
+
+        .application-section {
+            padding: 20px;
+        }
+
+
+        .application-container {
+            grid-template-columns: 1fr;
+            padding: 20px;
+        }
+
+
+        .app-card {
+            font-size: 20px;
+        }
+
+
+
+
+        /* Companies */
+
+        .company-container {
+            grid-template-columns: 1fr;
+            padding: 20px;
+        }
+
+
+        .company-card {
+            font-size: 20px;
+        }
+
+
+
+
+        /* Future */
+
+        .future-container {
+            grid-template-columns: 1fr;
+            padding: 20px;
+        }
+
+
+
+        /* Resources */
+
+        .resource-container {
+            grid-template-columns: 1fr;
+            padding: 20px;
+        }
+
+
+
+        /* Footer */
+
+        .footer-container {
+
+            grid-template-columns: 1fr;
+            padding: 40px 20px;
+            text-align: center;
+
+        }
+
+    }
+</style>
+<header>
+    <nav>
+        <h1 class="top1">AI LEARN</h1>
+        <button id="btn">☰</button>
+        <div class="menu" id="menu">
+            <a href="index.html">Home</a>
+            <a href="aipage2.html">AI basics</a>
+            <a href="aipage3.html">AI technologies</a>
+            <a href="aipage4.html">AI tools</a>
+            <a href="aipage5.html">AI Applications</a>
+            <a href="#">contact</a>
+            <button id="theme">🌙</button>
+        </div>
+    </nav>
+</header>
+
+<body>
+    <div id="cursor"></div>
+
+    <div id="progress-bar"></div>
+
+    <button id="scrollTop">↑</button>
+
+    <div class="slider">
+        <img id="slider" src="images/ai.png">
+        <div class="not">
+            <h1 id="testa"></h1>
+            <p>Artificial Intelligence (AI) is a branch of computer science that enables machines to perform tasks that
+                normally require human intelligence. AI systems can learn from data, recognize patterns, understand
+                language, solve problems, and make decisions. Today, AI is widely used in everyday life through
+                chatbots, voice assistants, recommendation systems, image recognition, and self-driving technologies.
+            </p>
+        </div>
+    </div>
+    </div>
+
+    <div class="top3">
+        <h1>popular AI tools</h1>
+        <p>powerful AI tools that are shaping the future</p>
+    </div>
+    </div>
+
+    <div class="top4">
+        <div class="top5">
+            <img src="images/ai.png">
+            <h1>ChatGPT</h1>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+        </div>
+
+        <div class="top5">
+            <img src="images/ai.png">
+            <h1>ChatGPT</h1>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+        </div>
+
+        <div class="top5">
+            <img src="images/ai.png">
+            <h1>ChatGPT</h1>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+        </div>
+
+        <div class="top5">
+            <img src="images/ai.png">
+            <h1>ChatGPT</h1>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+        </div>
+
+        <div class="top5">
+            <img src="images/ai.png">
+            <h1>ChatGPT</h1>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+        </div>
+    </div>
+
+    <div class="suru1">
+
+        <div class="suru2">
+            <h1>AI Career Roadmap</h1>
+            <h4>Your step by step path to build a career in AI</h4>
+            <p>1. Learn Python Programming and AI Basics.</p>
+            <p>2. Understand Mathematics, Statistics, and Data.</p>
+            <p>3. Learn Machine Learning Algorithms and Models.</p>
+            <p>4. Explore Deep Learning and Neural Networks.</p>
+            <p>5. Build Real-World AI Projects and Portfolio.</p>
+            <p>6. Apply for AI Jobs and Career Opportunities.</p>
+        </div>
+
+
+        <div class="suru2">
+            <h1>AI Jobs</h1>
+            <h4>Top career options in the AI field</h4>
+            <p>1. AI Engineer - Develop intelligent AI systems.</p>
+            <p>2. Data Scientist - Analyze data and create predictions.</p>
+            <p>3. Machine Learning Engineer - Build ML models.</p>
+            <p>4. Deep Learning Engineer - Create neural network solutions.</p>
+            <p>5. Prompt Engineer - Design effective AI prompts.</p>
+            <p>6. NLP Engineer - Build language-based AI applications.</p>
+        </div>
+
+    </div>
+
+
+    <section class="why-ai">
+
+        <h1>Why Learn Artificial Intelligence?</h1>
+
+        <div class="why-container">
+
+            <div class="why-card">
+                <h2> Fast Growing Technology</h2>
+                <p>
+                    AI is one of the fastest-growing technologies that is changing the future of every industry.
+                </p>
+            </div>
+
+            <div class="why-card">
+                <h2> High Demand Skills</h2>
+                <p>
+                    AI skills are in high demand across industries and create better career opportunities.
+                </p>
+            </div>
+
+            <div class="why-card">
+                <h2> Productivity & Automation</h2>
+                <p>
+                    AI helps automate tasks, save time, and improve work efficiency.
+                </p>
+            </div>
+
+            <div class="why-card">
+                <h2>Career Opportunities</h2>
+                <p>
+                    AI provides excellent career options in technology and innovation fields.
+                </p>
+            </div>
+
+            <div class="why-card">
+                <h2> Real World Solutions</h2>
+                <p>
+                    AI helps solve complex real-world problems using smart technology.
+                </p>
+            </div>
+
+            <div class="why-card">
+                <h2>Innovation & Creativity</h2>
+                <p>
+                    AI helps create new ideas, smart solutions, and innovative technologies for the future.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="skills-section">
+
+        <h1>Essential AI Skills</h1>
+
+        <div class="skills-container">
+
+            <div class="skill-card">
+                <h2> Python Programming</h2>
+                <p>Learn programming basics to build AI and machine learning applications.</p>
+            </div>
+
+            <div class="skill-card">
+                <h2> Mathematics & Statistics</h2>
+                <p>Mathematics and statistics help understand AI algorithms and data.</p>
+            </div>
+
+            <div class="skill-card">
+                <h2> Machine Learning</h2>
+                <p>Learn how machines learn patterns and make predictions.</p>
+            </div>
+
+            <div class="skill-card">
+                <h2> Deep Learning</h2>
+                <p>Understand neural networks and advanced AI models.</p>
+            </div>
+
+            <div class="skill-card">
+                <h2> Data Analysis</h2>
+                <p>Analyze data and find useful information using AI techniques.</p>
+            </div>
+
+            <div class="skill-card">
+                <h2> Prompt Engineering</h2>
+                <p>Create effective prompts to get better AI results.</p>
+            </div>
+
+            <div class="skill-card">
+                <h2> Problem Solving</h2>
+                <p>Develop logical thinking to solve real-world problems.</p>
+            </div>
+
+            <div class="skill-card">
+                <h2>Database & Data Management</h2>
+                <p>Learn how to store, manage, and organize data used for training AI models.</p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="application-section">
+
+        <h1>Applications of AI</h1>
+
+        <div class="application-container">
+
+            <div class="app-card"> Healthcare</div>
+
+            <div class="app-card"> Education</div>
+
+            <div class="app-card"> Self-driving Cars</div>
+
+            <div class="app-card"> E-commerce</div>
+
+            <div class="app-card"> Banking</div>
+
+            <div class="app-card"> Gaming</div>
+
+            <div class="app-card"> Smartphones</div>
+
+            <div class="app-card"> Manufacturing</div>
+
+        </div>
+
+    </section>
+
+
+    <section class="company-section">
+
+        <h1>Top AI Companies</h1>
+
+        <div class="company-container">
+
+            <div class="company-card">OpenAI</div>
+
+            <div class="company-card">Google DeepMind</div>
+
+            <div class="company-card">Microsoft</div>
+
+            <div class="company-card">NVIDIA</div>
+
+            <div class="company-card">Meta</div>
+
+            <div class="company-card">IBM</div>
+
+            <div class="company-card">Amazon</div>
+
+            <div class="company-card">Anthropic</div>
+
+        </div>
+
+    </section>
+
+
+    <section class="future-section">
+
+        <h1>Future of Artificial Intelligence</h1>
+
+        <div class="future-container">
+
+            <div class="future-card">
+                <h2> Advanced Technology</h2>
+                <p>
+                    AI will become more powerful and intelligent, helping humans in different fields.
+                </p>
+            </div>
+
+
+            <div class="future-card">
+                <h2> New Career Opportunities</h2>
+                <p>
+                    AI will create new jobs and career opportunities in technology industries.
+                </p>
+            </div>
+            <div class="future-card">
+                <h2> Better Solutions</h2>
+                <p>
+                    AI will help solve complex problems in healthcare, education and business.
+                </p>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="resource-section">
+        <h1>AI Learning Resources</h1>
+        <div class="resource-container">
+            <div class="resource-card">
+                <h2> Python Courses</h2>
+                <p>
+                    Learn Python programming fundamentals and libraries used for Artificial Intelligence development.
+                </p>
+            </div>
+
+            <div class="resource-card">
+                <h2> Machine Learning Tutorials</h2>
+                <p>
+                    Understand machine learning algorithms, models, and how computers learn from data.
+                </p>
+            </div>
+
+            <div class="resource-card">
+                <h2> AI Research Papers</h2>
+                <p>
+                    Explore latest AI innovations, technologies, and research studies from experts.
+                </p>
+            </div>
+
+            <div class="resource-card">
+                <h2> Practice Projects</h2>
+                <p>
+                    Build real-world AI projects to improve your skills and gain practical experience.
+                </p>
+            </div>
+
+            <div class="resource-card">
+                <h2> Data Science Resources</h2>
+                <p>
+                    Learn data analysis, data visualization, and data handling skills that are important for AI
+                    development.
+                </p>
+            </div>
+
+            <div class="resource-card">
+                <h2>AI Communities</h2>
+                <p>
+                    Join AI communities to connect with developers, researchers, and other learners.
+                </p>
+            </div>
+        </div>
+    </section>
+
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-box">
+                <h2>AI Learn</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est placeat cumque consequatur unde
+                    voluptatum nisi?</p>
+            </div>
+            <div class="footer-box">
+                <h2>Quick Links</h2>
+                <p>Home</p>
+                <p>AI basics</p>
+                <p>AI technologies</p>
+                <p>AI tools</p>
+                <p>contact</p>
+            </div>
+            <div class="footer-box">
+                <h2>resources</h2>
+                <p>blog</p>
+                <p>tutorials</p>
+                <p>projects</p>
+                <p>faq</p>
+                <p>glossary</p>
+            </div>
+            <div class="footer-box">
+                <h2>Contact</h2>
+                <p>Email : support@AIlearn.com</p>
+                <p>Phone : +91 9876543210</p>
+                <p>India</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>© 2026 AI Learn. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+<script>
+    var msg = "AI tools & career"
+
+    var i = 0
+
+    function typing() {
+        document.getElementById("testa").innerHTML += msg.charAt(i)
+
+        i++
+        if (i == msg.length) {
+            setTimeout(function () {
+                document.getElementById("testa").innerHTML = ""
+                i = 0
+            }, 3000)
+        }
+    }
+    setInterval(typing, 300)
+</script>
+
+<script>
+
+    var sliderImages = [
+        "images/ai.png",
+        "images/ai.png",
+        "images/ai.png",
+        "images/ai.png"
+    ];
+
+    var current = 0
+
+    setInterval(function () {
+
+        current++;
+
+        if (current >= sliderImages.length) {
+            current = 0
+        }
+
+        document.getElementById("slider").src = sliderImages[current]
+
+    }, 2000);
+
+</script>
+
+<script>
+    var cursor = document.getElementById("cursor");
+
+    document.addEventListener("mousemove", function (e) {
+
+        cursor.style.left = e.clientX + "px";
+        cursor.style.top = e.clientY + "px";
+
+    });
+</script>
+
+<script>
+    var btn = document.getElementById("btn")
+    var menu = document.getElementById("menu")
+    btn.onclick = function () {
+        menu.classList.toggle("show")
+    }
+</script>
+
+<script>
+    var theme = document.getElementById("theme");
+
+    theme.onclick = function () {
+
+        document.body.classList.toggle("dark")
+
+        if (document.body.classList.contains("dark")) {
+            theme.innerHTML = "☀️"
+        }
+        else {
+            theme.innerHTML = "🌙"
+        }
+
+    }
+</script>
+
+<script>
+    const progressBar = document.getElementById("progress-bar");
+    const scrollBtn = document.getElementById("scrollTop");
+
+    window.addEventListener("scroll", function () {
+
+        let scroll = document.documentElement.scrollTop;
+
+        let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+
+        let progress = (scroll / height) * 100;
+
+        progressBar.style.width = progress + "%";
+
+        if (scroll > 300) {
+            scrollBtn.style.display = "block";
+        } else {
+            scrollBtn.style.display = "none";
+        }
+
+    });
+
+    scrollBtn.onclick = function () {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    };
+</script>
+
+</html>

@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+        scroll-behavior: smooth;
+    }
+
+    body {
+        background-color: #f5f7fa;
+    }
+
+    .dark {
+        background: black;
+        color: white;
+    }
+
+    nav {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        height: 80px;
+        background: rgb(249, 248, 248);
+        border: none;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 80px;
+        z-index: 9999;
+    }
+
+    #btn {
+        display: none;
+        background: none;
+        border: none;
+        color: black;
+        cursor: pointer;
+        font-size: 25px;
+    }
+
+    .menu a {
+        text-decoration: none;
+        color: black;
+        font-size: 20px;
+        margin: 10px;
+    }
+
+    .top1 {
+        font-size: 30px;
+        color: blue;
+    }
+
+    .menu {
+        display: flex;
+        gap: 30px;
+    }
+
+    #theme {
+        background: none;
+        border: none;
+        font-size: 25px;
+        cursor: pointer;
+        padding-left: 200px;
+    }
+
+    .top2 {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 70px;
+        padding: 120px 80px 40px;
+    }
+
+    .top3 {
+        width: 50%;
+        text-align: center;
+    }
+
+    .top3 img {
+        width: 100%;
+        border-radius: 20px;
+    }
+
+    .top4 h1 {
+        height: 60px;
+        text-transform: capitalize;
+        color: blue;
+    }
+
+    .top4 h2 {
+        font-size: 18px;
+        line-height: 32px;
+        font-weight: 400;
+    }
+
+    .top5 {
+        width: 90%;
+        display: flex;
+        gap: 50px;
+        margin: 30px auto;
+        display: flex;
+        align-items: center;
+        padding: 60px 40px;
+        background: white;
+        border-radius: 20px;
+    }
+
+    .top6 {
+        width: 30%;
+        display: block;
+        margin: auto;
+    }
+
+    .top6 img {
+        width: 100%;
+        border-radius: 10px;
+    }
+
+    .top7 {
+        width: 50%;
+        display: block;
+        margin: auto;
+    }
+
+    .top8 {
+        width: 20%;
+        display: block;
+        margin: auto;
+    }
+
+    .top7 h5 {
+        font-size: 30px;
+        color: blue;
+        text-align: center;
+    }
+
+
+    .top7 h1 {
+        font-size: 30px;
+        text-transform: capitalize;
+        text-align: center;
+        padding-bottom: 10px;
+        color: #0d6efd;
+    }
+
+    .top7 h2 {
+        font-size: 20px;
+        text-transform: capitalize;
+        text-align: center;
+        line-height: 50px;
+    }
+
+    .top8 ul {
+        list-style: none;
+        padding: 0;
+        margin-top: 20px;
+    }
+
+    .top8 li {
+        background: #f5f7fa;
+        margin-bottom: 15px;
+        padding: 14px 18px;
+        border-left: 5px solid #0d6efd;
+        border-radius: 8px;
+        font-size: 18px;
+        font-weight: 500;
+        transition: .3s;
+    }
+
+    .top8 li:hover {
+        background: #e8f1ff;
+        transform: translateX(5px);
+    }
+
+
+
+    footer {
+        background: #111;
+        color: #fff;
+        margin-top: 80px;
+    }
+
+    .footer-container {
+        width: 90%;
+        margin: auto;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 40px;
+        padding: 60px 0;
+        text-transform: capitalize;
+    }
+
+    .footer-box h2 {
+        color: #0d6efd;
+        margin-bottom: 20px;
+        font-size: 28px;
+    }
+
+    .footer-box p {
+        color: #ddd;
+        margin: 12px 0;
+        line-height: 28px;
+        transition: .5s;
+        cursor: pointer;
+    }
+
+    .footer-box p:hover {
+        color: #0d6efd;
+    }
+
+    .copyright {
+        border-top: 1px solid #333;
+        text-align: center;
+        padding: 20px;
+    }
+
+    .copyright p {
+        color: #bbb;
+        font-size: 16px;
+    }
+
+    .comparison {
+        width: 90%;
+        margin: 80px auto;
+        text-align: center;
+    }
+
+    .comparison h1 {
+        font-size: 40px;
+        color: #0d6efd;
+        margin-bottom: 30px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        background: #fff;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, .1);
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    th {
+        background: #0d6efd;
+        color: #fff;
+        padding: 18px;
+        font-size: 22px;
+    }
+
+    td {
+        padding: 18px;
+        font-size: 18px;
+        border-bottom: 1px solid #ddd;
+    }
+
+
+    .importance {
+        width: 90%;
+        margin: 80px auto;
+        text-align: center;
+    }
+
+    .importance h1 {
+        font-size: 40px;
+        color: #0d6efd;
+        margin-bottom: 20px;
+    }
+
+    .importance p {
+        font-size: 20px;
+        line-height: 38px;
+        color: #555;
+    }
+
+
+    .conclusion {
+        width: 90%;
+        margin: 80px auto;
+        text-align: center;
+    }
+
+    .conclusion h1 {
+        font-size: 40px;
+        color: #0d6efd;
+        margin-bottom: 25px;
+    }
+
+    .conclusion p {
+        font-size: 20px;
+        line-height: 36px;
+        color: #555;
+    }
+
+
+    .benefits {
+        width: 90%;
+        margin: 80px auto;
+        text-align: center;
+    }
+
+    .benefits h1 {
+        font-size: 40px;
+        color: #0d6efd;
+        margin-bottom: 30px;
+    }
+
+    .benefit-box {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 25px;
+    }
+
+    .card {
+        background: #fff;
+        padding: 25px;
+        border-radius: 12px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, .1);
+        transition: .3s;
+    }
+
+    .card:hover {
+        transform: translateY(-8px);
+    }
+
+    .card h2 {
+        font-size: 24px;
+        color: #0d6efd;
+        margin-bottom: 15px;
+    }
+
+    .card p {
+        font-size: 18px;
+        line-height: 30px;
+        color: #555;
+    }
+
+    tbody tr:hover {
+        background: #eef5ff;
+    }
+
+    @media (max-width:768px) {
+
+        nav {
+            height: 70px;
+            padding: 0 20px;
+        }
+
+        .top1 {
+            font-size: 24px;
+        }
+
+        #btn {
+            display: block;
+            font-size: 28px;
+        }
+
+        .menu {
+            position: absolute;
+            top: 70px;
+            left: 0;
+            width: 100%;
+            background: #111;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: .5s;
+            padding: 0;
+        }
+
+        .menu.show {
+            max-height: 500px;
+            padding: 20px 0;
+        }
+
+        .menu a {
+            color: #fff;
+            font-size: 20px;
+        }
+
+        #theme {
+            padding-left: 0;
+            color: #fff;
+        }
+
+        /* Hero Section */
+
+        .top2 {
+            flex-direction: column;
+            padding: 100px 20px 40px;
+            gap: 30px;
+        }
+
+        .top3,
+        .top4 {
+            width: 100%;
+            text-align: center;
+        }
+
+        .top3 img {
+            width: 90%;
+        }
+
+        .top4 h1 {
+            font-size: 28px;
+            height: 60px;
+            margin-bottom: 15px;
+        }
+
+        .top4 h2 {
+            font-size: 16px;
+            line-height: 28px;
+        }
+
+        /* AI Technology Section */
+
+        .top5 {
+            flex-direction: column;
+            padding: 30px 20px;
+            gap: 30px;
+        }
+
+        .top6,
+        .top7,
+        .top8 {
+            width: 100%;
+        }
+
+        .top6 img {
+            width: 80%;
+            display: block;
+            margin: auto;
+        }
+
+        .top7 h1 {
+            font-size: 24px;
+        }
+
+        .top7 h2 {
+            font-size: 16px;
+            line-height: 30px;
+        }
+
+        .top8 h1 {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .top8 li {
+            font-size: 16px;
+            padding: 12px;
+        }
+
+        .benefit-box {
+            grid-template-columns: repeat(1, 1fr);
+            gap: 30px;
+            margin: 30px auto;
+        }
+
+        .footer-container {
+            grid-template-columns: 1fr;
+            padding: 40px 20px;
+            gap: 30px;
+            text-align: center;
+        }
+
+    }
+</style>
+<header>
+    <nav>
+        <h1 class="top1">AI LEARN</h1>
+        <button id="btn">☰</button>
+        <div class="menu" id="menu">
+            <a href="index.html">Home</a>
+            <a href="aipage2.html">AI basics</a>
+            <a href="aipage3.html">AI technologies</a>
+            <a href="aipage4.html">AI tools</a>
+            <a href="aipage5.html">AI Applications</a>
+            <a href="#">contact</a>
+            <button id="theme">🌙</button>
+        </div>
+    </nav>
+</header>
+
+<body>
+
+    <div class="top2">
+        <div class="top3">
+            <img src="images/techno.png">
+        </div>
+        <div class="top4">
+            <h1 id="testa"></h1>
+            <h2>Artificial Intelligence (AI) technologies enable computers<br> and machines to perform tasks that
+                normally require<br> human intelligence, such as learning, reasoning, problem-solving,<br> understanding
+                language, and recognizing images. These technologies <br>are transforming industries by making systems
+                smarter, faster, and more efficient .</h2>
+        </div>
+    </div>
+    </div>
+
+    <div class="top5">
+        <div class="top6">
+            <img src="images/machine.png">
+        </div>
+        <div class="top7">
+            <h1>1. machine learning</h1>
+            <h2>Machine Learning is an AI technology that allows computers to learn from data, identify patterns, and
+                make accurate predictions without explicit programming. It is widely used in healthcare, finance,
+                e-commerce, and many other industries.</h2>
+        </div>
+        <div class="top8">
+            <h1>Key Uses</h1>
+
+            <ul>
+                <li> Personalized Recommendations</li>
+                <li> Banking Fraud Detection</li>
+                <li> Face & Image Recognition</li>
+                <li> Voice Assistants</li>
+                <li> Healthcare Predictions</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="top5">
+        <div class="top6">
+            <img src="images/deep.png">
+        </div>
+        <div class="top7">
+            <h1>2. deep learning</h1>
+            <h2>Deep Learning is a powerful AI technology that enables computers to learn complex patterns from large
+                datasets. It is commonly used in facial recognition, voice assistants, medical imaging, and autonomous
+                vehicles.</h2>
+        </div>
+        <div class="top8">
+            <h1>Key Uses</h1>
+
+            <ul>
+                <li>Image Recognition</li>
+                <li>Speech Recognition</li>
+                <li>Facial Recognition</li>
+                <li>Medical Image Analysis</li>
+                <li>Self-Driving Cars</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="top5">
+        <div class="top6">
+            <img src="images/natural.png">
+        </div>
+        <div class="top7">
+            <h1>3. natural language processing (NLP)</h1>
+            <h2>Natural Language Processing (NLP) is a branch of Artificial Intelligence that enables computers to
+                understand, interpret, and generate human language. It is widely used in chatbots, language translation,
+                voice assistants, and text analysis.</h2>
+        </div>
+        <div class="top8">
+            <h1>Key Uses</h1>
+
+            <ul>
+                <li>Chatbots & Virtual Assistants</li>
+                <li>Language Translation</li>
+                <li>Sentiment Analysis</li>
+                <li>Text Summarization</li>
+                <li>Speech Recognition</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="top5">
+        <div class="top6">
+            <img src="images/computer.png">
+        </div>
+        <div class="top7">
+            <h1>4. computer vision</h1>
+            <h2>Computer Vision is a branch of Artificial Intelligence that enables computers to analyze, understand,
+                and interpret images and videos. It is widely used in facial recognition, object detection, medical
+                imaging, and autonomous vehicles.</h2>
+        </div>
+        <div class="top8">
+            <h1>Key Uses</h1>
+
+            <ul>
+                <li>Image Recognition</li>
+                <li>Object Detection</li>
+                <li>Facial Recognition</li>
+                <li>Medical Image Analysis</li>
+                <li>Autonomous Vehicles</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="top5">
+        <div class="top6">
+            <img src="images/robotic.png">
+        </div>
+        <div class="top7">
+            <h1>5. robotics</h1>
+            <h2>Robotics is a branch of Artificial Intelligence that focuses on designing and developing intelligent
+                robots capable of performing tasks automatically. It is widely used in manufacturing, healthcare, space
+                exploration, and industrial automation.</h2>
+        </div>
+        <div class="top8">
+            <h1>Key Uses</h1>
+
+            <ul>
+                <li>Industrial Automation</li>
+                <li>Medical & Surgical Robots</li>
+                <li>Warehouse Automation</li>
+                <li>Space Exploration</li>
+                <li>Delivery & Service Robots</li>
+            </ul>
+        </div>
+    </div>
+
+
+    <div class="top5">
+        <div class="top6">
+            <img src="images/gen.png">
+        </div>
+        <div class="top7">
+            <h1>6. generative AI</h1>
+            <h2>Generative AI is a branch of Artificial Intelligence that creates new content such as text, images,
+                videos, music, and code. It learns from existing data to generate creative and realistic outputs, making
+                it useful in content creation, design, and software development.</h2>
+        </div>
+        <div class="top8">
+            <h1>Key Uses</h1>
+
+            <ul>
+                <li>Text Generation</li>
+                <li>Image Creation</li>
+                <li>Code Generation</li>
+                <li>Video & Music Creation</li>
+                <li>Content Writing</li>
+            </ul>
+        </div>
+    </div>
+
+    <section class="comparison">
+        <h1>AI Technologies Comparison</h1>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Technology</th>
+                    <th>Main Use</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>Machine Learning</td>
+                    <td>Predictions</td>
+                </tr>
+
+                <tr>
+                    <td>Deep Learning</td>
+                    <td>Image & Speech Recognition</td>
+                </tr>
+
+                <tr>
+                    <td>Natural Language Processing</td>
+                    <td>Language Understanding</td>
+                </tr>
+
+                <tr>
+                    <td>Computer Vision</td>
+                    <td>Image Analysis</td>
+                </tr>
+
+                <tr>
+                    <td>Robotics</td>
+                    <td>Automation</td>
+                </tr>
+
+                <tr>
+                    <td>Generative AI</td>
+                    <td>Content Creation</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+
+    <section class="importance">
+        <h1>Why AI Technologies Matter?</h1>
+        <p>
+            AI technologies are transforming the way people live and work. They help automate
+            repetitive tasks, improve decision-making, increase productivity, and solve complex
+            problems faster. From healthcare and education to finance and transportation,
+            AI is making industries smarter, more efficient, and more innovative.
+        </p>
+    </section>
+
+    <section class="conclusion">
+        <h1>Conclusion</h1>
+
+        <p>
+            Artificial Intelligence technologies are transforming the world by making systems
+            smarter, faster, and more efficient. From Machine Learning and Computer Vision to
+            Robotics and Generative AI, these technologies are improving healthcare, education,
+            finance, transportation, and many other industries. Understanding AI technologies
+            today helps us prepare for a smarter and more innovative future.
+        </p>
+    </section>
+
+    <section class="benefits">
+        <h1>Key Benefits of AI Technologies</h1>
+
+        <div class="benefit-box">
+            <div class="card">
+                <h2> Saves Time</h2>
+                <p>Automates repetitive tasks and increases productivity.</p>
+            </div>
+
+            <div class="card">
+                <h2> Better Decisions</h2>
+                <p>Analyzes data quickly to provide accurate insights.</p>
+            </div>
+
+            <div class="card">
+                <h2> Higher Efficiency</h2>
+                <p>Improves business operations with smart automation.</p>
+            </div>
+
+            <div class="card">
+                <h2> Reduces Errors</h2>
+                <p>Minimizes human mistakes through intelligent systems.</p>
+            </div>
+
+            <div class="card">
+                <h2> Real-World Applications</h2>
+                <p>Used in healthcare, education, banking, transport, and more.</p>
+            </div>
+
+            <div class="card">
+                <h2> Innovation</h2>
+                <p>Creates new opportunities for smarter products and services.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-box">
+                <h2>AI Learn</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est placeat cumque consequatur unde
+                    voluptatum nisi?</p>
+            </div>
+            <div class="footer-box">
+                <h2>Quick Links</h2>
+                <p>Home</p>
+                <p>AI basics</p>
+                <p>AI technologies</p>
+                <p>AI tools</p>
+                <p>contact</p>
+            </div>
+            <div class="footer-box">
+                <h2>resources</h2>
+                <p>blog</p>
+                <p>tutorials</p>
+                <p>projects</p>
+                <p>faq</p>
+                <p>glossary</p>
+            </div>
+            <div class="footer-box">
+                <h2>Contact</h2>
+                <p>Email : support@AIlearn.com</p>
+                <p>Phone : +91 9876543210</p>
+                <p>India</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>© 2026 AI Learn. All Rights Reserved.</p>
+        </div>
+    </footer>
+</body>
+
+
+<script>
+    var msg = "learn AI technologies"
+
+    var i = 0
+
+    function typing() {
+        document.getElementById("testa").innerHTML += msg.charAt(i)
+
+        i++
+        if (i == msg.length) {
+            setTimeout(function () {
+                document.getElementById("testa").innerHTML = ""
+                i = 0
+            }, 3000)
+        }
+    }
+    setInterval(typing, 300)
+</script>
+
+<script>
+    var btn = document.getElementById("btn")
+    var menu = document.getElementById("menu")
+    btn.onclick = function () {
+        menu.classList.toggle("show")
+    }
+</script>
+
+<script>
+    var theme = document.getElementById("theme");
+
+    theme.onclick = function () {
+
+        document.body.classList.toggle("dark")
+
+        if (document.body.classList.contains("dark")) {
+            theme.innerHTML = "☀️"
+        }
+        else {
+            theme.innerHTML = "🌙"
+        }
+
+    }
+</script>
+
+</html>

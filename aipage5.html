@@ -1,0 +1,1159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+        scroll-behavior: smooth;
+    }
+
+
+    .dark {
+        background: black;
+        color: white;
+    }
+
+
+    #cursor {
+        width: 20px;
+        height: 20px;
+        background: #0d6efd;
+        border-radius: 50%;
+        position: fixed;
+        left: 0;
+        top: 0;
+        pointer-events: none;
+        transition: 0.08s;
+        z-index: 99999;
+    }
+
+    #progress-bar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 0%;
+        height: 5px;
+        background: #0d6efd;
+        z-index: 9999;
+    }
+
+
+    #scrollTop {
+        position: fixed;
+        right: 25px;
+        bottom: 25px;
+
+        width: 55px;
+        height: 55px;
+
+        border: none;
+        border-radius: 50%;
+
+        background: #0d6efd;
+        color: #fff;
+
+        font-size: 22px;
+        cursor: pointer;
+
+        display: none;
+
+        transition: .3s;
+    }
+
+    #scrollTop:hover {
+        transform: translateY(-8px);
+    }
+
+    nav {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        height: 80px;
+        background: rgb(249, 248, 248);
+        border: none;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 80px;
+        z-index: 9999;
+    }
+
+    #btn {
+        display: none;
+        background: none;
+        border: none;
+        color: black;
+        cursor: pointer;
+        font-size: 25px;
+    }
+
+    .menu a {
+        text-decoration: none;
+        color: black;
+        font-size: 20px;
+        margin: 10px;
+    }
+
+    .top1 {
+        font-size: 30px;
+        color: blue;
+    }
+
+    .menu {
+        display: flex;
+        gap: 30px;
+    }
+
+    #theme {
+        background: none;
+        border: none;
+        font-size: 25px;
+        cursor: pointer;
+        padding-left: 200px;
+    }
+
+    .application-hero {
+        width: 100%;
+        min-height: 130vh;
+        background: linear-gradient(135deg, #f7fbff, #edf5ff, #ffffff);
+        margin-bottom: 200px;
+    }
+
+
+    .hero-content {
+        padding-top: 150px;
+    }
+
+
+    .hero-content h5 {
+        color: #0d6efd;
+        font-size: 18px;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .hero-content h1 {
+        font-size: 52px;
+        color: #222;
+        margin-bottom: 30px;
+        text-align: center;
+
+    }
+
+    .hero-content span {
+        color: #0d6efd;
+    }
+
+    .hero-content p {
+        max-width: 900px;
+        margin: 45px auto;
+        font-size: 19px;
+        color: #555;
+        line-height: 38px;
+        text-align: justify;
+    }
+
+    .hero-btn {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    #now {
+
+        padding: 16px 35px;
+
+        background: #0d6efd;
+
+        color: #fff;
+
+        border: none;
+
+        border-radius: 8px;
+
+        font-size: 18px;
+
+        cursor: pointer;
+
+        transition: .4s;
+
+    }
+
+    #now:hover {
+
+        background: #0847b7;
+
+        transform: translateY(-8px);
+
+    }
+
+    #won {
+
+        padding: 16px 35px;
+
+        background: #fff;
+
+        color: #0d6efd;
+
+        border: 2px solid #0d6efd;
+
+        border-radius: 8px;
+
+        font-size: 18px;
+
+        cursor: pointer;
+
+        transition: .4s;
+
+    }
+
+    #won:hover {
+
+        background: #0d6efd;
+
+        color: #fff;
+
+        transform: translateY(-8px);
+
+    }
+
+
+    .why-ai {
+        width: 100%;
+        padding: 100px;
+        background: #f8fbff;
+    }
+
+    .why-ai .sec {
+        text-align: left;
+    }
+
+    .why-ai h1 {
+        color: #0d6efd;
+        padding-top: 80px;
+    }
+
+    .why-ai h2 {
+        font-size: 45px;
+        color: #222;
+        margin-bottom: 25px;
+    }
+
+    .why-ai p {
+        font-size: 18px;
+        color: #555;
+        line-height: 38px;
+        text-align: justify;
+    }
+
+
+
+    .about-application h2::after,
+    .why-ai h2::after {
+
+        content: "";
+
+        display: block;
+
+        width: 90px;
+
+        height: 4px;
+
+        margin-top: 15px;
+
+        background: #0d6efd;
+
+        border-radius: 20px;
+
+    }
+
+    .about-application {
+        margin-top: 60px;
+        margin-bottom: 50px;
+    }
+
+
+    .about-application p,
+    .why-ai p {
+
+        transition: .4s;
+
+    }
+
+    .about-application p:hover,
+    .why-ai p:hover {
+
+        color: #333;
+
+    }
+
+    .about-application .sec,
+    .why-ai .sec {
+
+        max-width: 1150px;
+
+        margin: auto;
+
+    }
+
+
+    .application-details {
+
+        width: 100%;
+
+        padding: 100px 8%;
+
+        background: #ffffff;
+
+    }
+
+    .application-details .sec {
+        margin-bottom: 80px;
+        margin-top: 100px;
+    }
+
+
+    .application-details .sec p {
+        text-align: center;
+        padding-top: 15px;
+    }
+
+    .application-box {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 70px;
+        margin-bottom: 120px;
+    }
+
+    .reverse {
+        flex-direction: row-reverse;
+    }
+
+
+    .application-image {
+        flex: 1;
+        overflow: hidden;
+        border-radius: 20px;
+    }
+
+
+    .application-image img {
+        width: 100%;
+        display: block;
+        border-radius: 20px;
+        transition: .5s;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, .15);
+    }
+
+
+    .application-image img:hover {
+        transform: scale(1.08);
+    }
+
+
+    .application-content {
+        flex: 1;
+    }
+
+
+    .application-content h2 {
+        font-size: 42px;
+        color: #0d6efd;
+        margin-bottom: 25px;
+        position: relative;
+    }
+
+
+
+    .application-content p {
+        margin-top: 35px;
+        font-size: 18px;
+        line-height: 36px;
+        color: #555;
+        text-align: justify;
+    }
+
+
+    .application-box:hover .application-content h2 {
+        color: #0847b7;
+    }
+
+    .application-box:hover img {
+        transform: scale(1.05);
+    }
+
+    .application-box:nth-child(even) {
+        padding: 50px;
+        border-radius: 20px;
+        background: #f8fbff;
+    }
+
+
+    .application-image img {
+        border: 5px solid #fff;
+    }
+
+
+
+
+    .application-content {
+        padding: 10px;
+    }
+
+    .application-content p {
+        letter-spacing: .3px;
+    }
+
+    .application-box,
+    .application-image,
+    .application-content {
+
+        transition: .4s;
+
+    }
+
+    .facts {
+
+        width: 100%;
+
+        padding: 100px 8%;
+
+        background: #f8fbff;
+
+    }
+
+    .facts .sec {
+        margin-bottom: 70px;
+    }
+
+    .top6 {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 30px;
+        padding: 20px 100px;
+    }
+
+    .top7 {
+        background: #ffffff;
+        padding: 40px 30px;
+        border-radius: 20px;
+        text-align: center;
+        transition: .4s;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, .08);
+        border: 1px solid #e8e8e8;
+        cursor: pointer;
+    }
+
+
+    .top7:hover {
+        transform: translateY(-12px);
+    }
+
+    .top7 h1 {
+        font-size: 52px;
+        color: #0d6efd;
+        margin-bottom: 20px;
+        transition: .4s;
+    }
+
+    .top7 p {
+        font-size: 17px;
+        color: #555;
+        line-height: 30px;
+        transition: .4s;
+    }
+
+
+    .sec {
+        margin-bottom: 60px;
+    }
+
+    .sec h1 {
+        text-align: center;
+        text-transform: uppercase;
+        font-size: 32px;
+        color: #0d6efd;
+        margin-top: -120px;
+    }
+
+    .sec h2 {
+        text-align: center;
+        text-transform: uppercase;
+        font-size: 32px;
+    }
+
+    .sec p {
+        text-align: center;
+        text-transform: capitalize;
+        font-size: 18px;
+        line-height: 40px;
+        text-align: justify;
+    }
+
+
+    .faq {
+        width: 850px;
+        margin: 20px auto;
+        border: 2px solid #ddd;
+        border-radius: 12px;
+        overflow: hidden;
+        background: #fff;
+        transition: .3s;
+    }
+
+    .faq:hover {
+        box-shadow: 0 10px 25px rgba(0, 0, 0, .12);
+    }
+
+    .question {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 18px 25px;
+        cursor: pointer;
+        font-size: 20px;
+        font-weight: 600;
+    }
+
+    .answer {
+        display: none;
+        padding: 20px 25px;
+        border-top: 1px solid #ddd;
+        color: #555;
+        line-height: 30px;
+        font-size: 17px;
+    }
+
+    .faq.active .answer {
+        display: block;
+    }
+
+    .btn {
+        width: 35px;
+        height: 35px;
+        border: none;
+        border-radius: 50%;
+        background: #0d6efd;
+        color: #fff;
+        font-size: 22px;
+        cursor: pointer;
+    }
+
+
+
+    footer {
+        background: #111;
+        color: #fff;
+        margin-top: 80px;
+    }
+
+    .footer-container {
+        width: 90%;
+        margin: auto;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 40px;
+        padding: 60px 0;
+        text-transform: capitalize;
+    }
+
+    .footer-box h2 {
+        color: #0d6efd;
+        margin-bottom: 20px;
+        font-size: 28px;
+    }
+
+    .footer-box p {
+        color: #ddd;
+        margin: 12px 0;
+        line-height: 28px;
+        transition: .5s;
+        cursor: pointer;
+    }
+
+    .footer-box p:hover {
+        color: #0d6efd;
+    }
+
+    .copyright {
+        border-top: 1px solid #333;
+        text-align: center;
+        padding: 20px;
+    }
+
+    .copyright p {
+        color: #bbb;
+        font-size: 16px;
+    }
+
+    @media (max-width:768px) {
+
+        nav {
+            height: 70px;
+            padding: 0 20px;
+        }
+
+        .top1 {
+            font-size: 24px;
+        }
+
+        #btn {
+            display: block;
+            font-size: 28px;
+        }
+
+        .menu {
+            position: absolute;
+            top: 70px;
+            left: 0;
+            width: 100%;
+            background: #111;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: .5s;
+            padding: 0;
+        }
+
+        .menu.show {
+            max-height: 500px;
+            padding: 20px 0;
+        }
+
+        .menu a {
+            color: #fff;
+            font-size: 20px;
+        }
+
+        #theme {
+            padding-left: 0;
+            color: #fff;
+        }
+
+        .footer-container {
+            grid-template-columns: 1fr;
+            padding: 40px 20px;
+            gap: 30px;
+            text-align: center;
+        }
+
+    }
+</style>
+<header>
+    <nav>
+        <h1 class="top1">AI LEARN</h1>
+        <button id="btn">☰</button>
+        <div class="menu" id="menu">
+            <a href="index.html">Home</a>
+            <a href="aipage2.html">AI basics</a>
+            <a href="aipage3.html">AI technologies</a>
+            <a href="aipage4.html">AI tools</a>
+            <a href="aipage5.html">AI Applications</a>
+            <a href="#">contact</a>
+            <button id="theme">🌙</button>
+        </div>
+    </nav>
+</header>
+
+<body>
+    <div id="cursor"></div>
+
+    <div id="progress-bar"></div>
+
+    <button id="scrollTop">↑</button>
+
+    <section class="application-hero">
+        <div class="hero-content">
+            <h5>Explore The Power of Artificial Intelligence</h5>
+            <h1>Artificial Intelligence<br><span>Applications</span></h1>
+            <p>
+                Artificial Intelligence is transforming the modern world by making machines
+                capable of learning, reasoning, solving problems, and making intelligent
+                decisions. Today AI is used in healthcare, education, finance,
+                transportation, agriculture, manufacturing, cybersecurity, entertainment,
+                and many other industries.
+
+                From voice assistants like Siri and Google Assistant to self-driving cars
+                and smart recommendation systems, AI is becoming an important part of our
+                everyday lives. It helps businesses automate repetitive tasks, improve
+                customer experience, analyze huge amounts of data, and make faster decisions
+                with greater accuracy.
+
+                AI is not just a future technology—it is already changing the way people
+                live, work, communicate, learn, and innovate.
+            </p>
+            <div class="hero-btn">
+                <button id="now">Explore Applications</button>
+                <button id="won">Learn More</button>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- ================= ABOUT APPLICATIONS ================= -->
+
+    <section class="about-application">
+        <div class="sec">
+            <h1>Introduction</h1>
+            <h2>What Are AI Applications?</h2>
+            <p>
+                Artificial Intelligence applications refer to the real-world use of
+                AI technologies to solve problems, improve productivity, and perform
+                tasks that normally require human intelligence. AI systems can learn
+                from data, recognize patterns, understand speech, analyze images,
+                make predictions, and even interact with humans naturally.
+
+                Today millions of companies around the world use Artificial
+                Intelligence to automate their business operations, provide better
+                customer service, improve medical diagnosis, optimize transportation,
+                detect cyber threats, recommend products, and create personalized
+                learning experiences.
+
+                AI applications continue to grow rapidly because they save time,
+                reduce human errors, increase efficiency, and provide valuable
+                insights through intelligent data analysis.
+
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= WHY AI APPLICATIONS ================= -->
+
+    <section class="why-ai">
+
+        <div class="sec">
+
+            <h1>Importance</h1>
+
+            <h2>Why AI Applications Matter?</h2>
+
+            <p>
+
+                Artificial Intelligence has become one of the most valuable
+                technologies of the 21st century. It enables organizations to make
+                smarter decisions, automate repetitive tasks, improve customer
+                satisfaction, and reduce operational costs.
+
+                AI applications are helping doctors detect diseases earlier,
+                assisting teachers in creating personalized learning experiences,
+                supporting farmers with smart crop monitoring, protecting digital
+                systems from cyber attacks, and enabling businesses to understand
+                customer behavior more effectively.
+
+                As technology continues to evolve, AI applications will become even
+                more powerful, creating smarter cities, intelligent transportation,
+                advanced robotics, and innovative solutions that improve the quality
+                of human life.
+
+            </p>
+
+        </div>
+
+    </section>
+
+    <!--==================== AI APPLICATION DETAILS ====================-->
+
+    <section class="application-details">
+
+        <div class="sec">
+
+            <h1>Detailed Applications</h1>
+
+            <h2>How Artificial Intelligence Is Transforming Industries</h2>
+
+            <p>
+
+                Artificial Intelligence is creating new opportunities across every<br>
+                sector by improving efficiency, reducing human effort, and providing<br>
+                intelligent solutions. Below are some of the most important real-world<br>
+                applications of AI with practical examples.
+
+            </p>
+
+        </div>
+
+
+        <!-- Healthcare -->
+
+        <div class="application-box">
+
+            <div class="application-image">
+
+                <img src="images/healthcare.jpg" alt="Healthcare AI">
+
+            </div>
+
+            <div class="application-content">
+
+                <h2>AI in Healthcare</h2>
+
+                <p>
+
+                    Artificial Intelligence is transforming healthcare by helping
+                    doctors detect diseases at an early stage, analyze medical
+                    images such as X-rays, CT scans, and MRI reports, monitor
+                    patients remotely, and recommend personalized treatments.
+
+                    AI-powered systems improve diagnosis accuracy, reduce medical
+                    errors, and save valuable time for healthcare professionals.
+                    Hospitals also use AI chatbots to answer patient questions and
+                    schedule appointments more efficiently.
+
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- Education -->
+
+        <div class="application-box reverse">
+
+            <div class="application-content">
+
+                <h2>AI in Education</h2>
+
+                <p>
+
+                    Artificial Intelligence is making education smarter through
+                    personalized learning platforms, virtual tutors, automated
+                    grading systems, and intelligent study recommendations.
+
+                    Students receive customized lessons based on their learning
+                    speed while teachers can easily track progress and identify
+                    weak areas. AI also helps translate educational content into
+                    different languages.
+
+                </p>
+
+            </div>
+
+            <div class="application-image">
+
+                <img src="images/education.jpg" alt="Education AI">
+
+            </div>
+
+        </div>
+
+
+
+        <!-- Finance -->
+
+        <div class="application-box">
+            <div class="application-image">
+                <img src="images/finance.jpg" alt="Finance AI">
+            </div>
+
+            <div class="application-content">
+                <h2>AI in Finance</h2>
+                <p>
+                    Banks and financial companies use Artificial Intelligence to
+                    detect fraud, analyze customer spending, predict investment
+                    opportunities, automate customer support, and manage financial
+                    risks.
+
+                    AI algorithms process millions of financial transactions in
+                    seconds, making banking services faster, safer, and more
+                    reliable for customers.
+                </p>
+            </div>
+        </div>
+
+
+
+        <!-- Transportation -->
+
+        <div class="application-box reverse">
+
+            <div class="application-content">
+
+                <h2>AI in Transportation</h2>
+
+                <p>
+
+                    Artificial Intelligence powers self-driving cars, intelligent
+                    traffic management systems, smart navigation, and route
+                    optimization.
+
+                    AI helps reduce traffic congestion, improves fuel efficiency,
+                    enhances road safety, and enables autonomous vehicles to make
+                    real-time driving decisions using sensors and cameras.
+
+                </p>
+
+            </div>
+
+            <div class="application-image">
+
+                <img src="images/transport.jpg" alt="Transportation AI">
+
+            </div>
+
+        </div>
+
+
+
+        <!-- Robotics -->
+
+        <div class="application-box">
+
+            <div class="application-image">
+
+                <img src="images/robotics.jpg" alt="Robotics AI">
+
+            </div>
+
+            <div class="application-content">
+
+                <h2>AI in Robotics</h2>
+
+                <p>
+
+                    AI-powered robots perform repetitive, dangerous, and highly
+                    accurate tasks in manufacturing, healthcare, logistics, and
+                    space exploration.
+
+                    Modern robots can recognize objects, understand speech,
+                    navigate environments, and even collaborate safely with
+                    humans to improve productivity and reduce operational costs.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <div class="sec">
+
+        <h1>Interesting Facts</h1>
+
+        <h2>Amazing Facts About Artificial Intelligence</h2>
+
+    </div>
+
+    <div class="top6">
+
+        <div class="top7">
+            <h1>1956</h1>
+            <p>The term Artificial Intelligence was introduced in 1956.</p>
+        </div>
+
+        <div class="top7">
+            <h1>24/7</h1>
+            <p>AI systems can work continuously without taking breaks.</p>
+        </div>
+
+        <div class="top7">
+            <h1>Millions</h1>
+            <p>Millions of businesses use AI to improve productivity.</p>
+        </div>
+
+        <div class="top7">
+            <h1>Future</h1>
+            <p>AI is expected to become one of the most influential technologies of this century.</p>
+        </div>
+
+    </div>
+
+    </section>
+
+
+    <div class="faq">
+        <div class="question">
+            What are AI Applications?
+            <button class="btn">+</button>
+        </div>
+        <div class="answer">
+            AI applications are software or systems that use Artificial
+            Intelligence to perform tasks such as learning, decision-making,
+            speech recognition, image analysis, automation, and prediction.
+        </div>
+    </div>
+
+    <div class="faq">
+        <div class="question">
+            Where is AI used?
+            <button class="btn">+</button>
+        </div>
+        <div class="answer">
+            AI is widely used in healthcare, education, banking,
+            transportation, agriculture, cybersecurity, entertainment,
+            manufacturing, and e-commerce.
+        </div>
+    </div>
+
+    <div class="faq">
+        <div class="question">
+            Is AI replacing humans?
+            <button class="btn">+</button>
+        </div>
+        <div class="answer">
+            AI automates repetitive tasks but also creates new job
+            opportunities. It works best when humans and AI collaborate
+            together.
+        </div>
+    </div>
+
+    <div class="faq">
+        <div class="question">
+            Can students learn AI?
+            <button class="btn">+</button>
+        </div>
+        <div class="answer">
+            Yes. Students can begin learning AI with programming languages
+            like Python and gradually explore Machine Learning, Deep
+            Learning, and Data Science.
+        </div>
+    </div>
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-box">
+                <h2>AI Learn</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est placeat cumque consequatur unde
+                    voluptatum nisi?</p>
+            </div>
+            <div class="footer-box">
+                <h2>Quick Links</h2>
+                <p>Home</p>
+                <p>AI basics</p>
+                <p>AI technologies</p>
+                <p>AI tools</p>
+                <p>contact</p>
+            </div>
+            <div class="footer-box">
+                <h2>resources</h2>
+                <p>blog</p>
+                <p>tutorials</p>
+                <p>projects</p>
+                <p>faq</p>
+                <p>glossary</p>
+            </div>
+            <div class="footer-box">
+                <h2>Contact</h2>
+                <p>Email : support@AIlearn.com</p>
+                <p>Phone : +91 9876543210</p>
+                <p>India</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>© 2026 AI Learn. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+
+<script>
+    document.querySelectorAll(".btn")
+        .forEach(function (btn) {
+            btn.onclick = function () {
+                var code = btn.parentElement.parentElement
+                code.classList.toggle("active")
+                if (code.classList.contains("active")) {
+                    btn.innerHTML = "-";
+                } else {
+                    btn.innerHTML = "+";
+                }
+            }
+        })
+</script>
+
+
+<script>
+    var cursor = document.getElementById("cursor");
+
+    document.addEventListener("mousemove", function (e) {
+
+        cursor.style.left = e.clientX + "px";
+        cursor.style.top = e.clientY + "px";
+
+    });
+</script>
+
+<script>
+    var btn = document.getElementById("btn")
+    var menu = document.getElementById("menu")
+    btn.onclick = function () {
+        menu.classList.toggle("show")
+    }
+</script>
+
+<script>
+    var theme = document.getElementById("theme");
+
+    theme.onclick = function () {
+
+        document.body.classList.toggle("dark")
+
+        if (document.body.classList.contains("dark")) {
+            theme.innerHTML = "☀️"
+        }
+        else {
+            theme.innerHTML = "🌙"
+        }
+
+    }
+</script>
+
+<script>
+    const progressBar = document.getElementById("progress-bar");
+    const scrollBtn = document.getElementById("scrollTop");
+
+    window.addEventListener("scroll", function () {
+
+        let scroll = document.documentElement.scrollTop;
+
+        let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+
+        let progress = (scroll / height) * 100;
+
+        progressBar.style.width = progress + "%";
+
+        if (scroll > 300) {
+            scrollBtn.style.display = "block";
+        } else {
+            scrollBtn.style.display = "none";
+        }
+
+    });
+
+    scrollBtn.onclick = function () {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    };
+</script>
+
+</html>
